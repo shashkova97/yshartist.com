@@ -236,60 +236,63 @@ body::before {
   min-height: 100vh;
   min-height: 100svh;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: flex-start;
   text-align: left;
-  padding: 6rem clamp(1.5rem, 5vw, 4.5rem) clamp(3rem, 7vh, 5rem);
+  padding: 7rem clamp(1.5rem, 5vw, 5rem) 0;
   overflow: hidden;
 }
 
-/* Полноэкранное фото-фон */
-.hero__media {
+/* Вырезанная фигура (PNG без фона), стоит справа от текста */
+.hero__figure {
   position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
+  right: clamp(-1rem, 1vw, 4rem);
+  bottom: 0;
+  height: min(94vh, 940px);
+  z-index: 1;
+  pointer-events: none;
 }
-.hero__photo {
-  width: 100%;
+.hero__figure img {
   height: 100%;
-  object-fit: cover;
-  object-position: center 28%;   /* держим лицо в кадре; подгоним под фото */
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 30px 70px rgba(0, 0, 0, 0.55));
 }
-/* «Лёгкая дымка»: общее затемнение + плотнее снизу под текст,
-   мягкое изумрудно-розовое свечение по углам */
-.hero__scrim {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to top,
-      rgba(8, 13, 11, 0.92) 0%,
-      rgba(8, 13, 11, 0.45) 32%,
-      rgba(8, 13, 11, 0.22) 60%,
-      rgba(8, 13, 11, 0.40) 100%),
-    radial-gradient(70% 55% at 78% 22%, var(--emerald-glow), transparent 60%),
-    radial-gradient(60% 50% at 15% 88%, var(--rose-glow), transparent 55%);
-}
+
+/* Изумрудное свечение позади фигуры */
 .hero__aura {
   position: absolute;
-  top: 40%; left: 70%;
-  width: 90vmin; height: 90vmin;
+  top: 42%; left: 66%;
+  width: 95vmin; height: 95vmin;
   transform: translate(-50%, -50%);
   background:
-    radial-gradient(circle at 50% 50%, var(--emerald-glow), transparent 60%);
-  filter: blur(30px);
-  mix-blend-mode: screen;
-  opacity: 0.7;
+    radial-gradient(circle at 50% 50%, var(--emerald-glow), transparent 62%),
+    radial-gradient(circle at 60% 70%, var(--rose-glow), transparent 55%);
+  filter: blur(28px);
+  z-index: 0;
   animation: breathe 11s ease-in-out infinite;
 }
 @keyframes breathe {
-  0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 0.55; }
-  50%     { transform: translate(-50%,-50%) scale(1.12); opacity: 0.8; }
+  0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 0.8; }
+  50%     { transform: translate(-50%,-50%) scale(1.12); opacity: 1; }
+}
+
+/* Затемнение снизу — «заземляет» фигуру и читаемость текста */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+    rgba(8, 13, 11, 0.85) 0%,
+    rgba(8, 13, 11, 0.25) 28%,
+    transparent 52%);
+  z-index: 1;
+  pointer-events: none;
 }
 .hero__content {
   position: relative;
-  z-index: 1;
-  max-width: min(900px, 92vw);
+  z-index: 2;
+  max-width: min(620px, 92vw);
 }
 
 .hero__eyebrow {
@@ -628,6 +631,29 @@ body::before {
   .about__inner { grid-template-columns: 1fr; }
   .about__portrait { max-width: 380px; margin: 0 auto; }
   .about__text { text-align: left; }
+
+  /* Шапка: фигура по центру за текстом, текст внизу */
+  .hero {
+    align-items: flex-end;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: clamp(2.5rem, 6vh, 4rem);
+  }
+  .hero__figure {
+    right: 50%;
+    transform: translateX(50%);
+    height: min(80vh, 660px);
+  }
+  .hero__aura { left: 50%; top: 40%; }
+  .hero::after {
+    background: linear-gradient(to top,
+      rgba(8, 13, 11, 0.92) 0%,
+      rgba(8, 13, 11, 0.55) 30%,
+      rgba(8, 13, 11, 0.15) 55%,
+      transparent 70%);
+  }
+  .hero__content { max-width: 100%; }
+  .hero__cta { justify-content: center; }
 }
 @media (hover: none) {
   .cursor-glow { display: none; }
