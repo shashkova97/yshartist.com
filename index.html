@@ -49,7 +49,18 @@
 
   <!-- ░░░░░░░░░░ HERO ░░░░░░░░░░ -->
   <section class="hero" id="hero">
-    <div class="hero__aura" aria-hidden="true"></div>
+    <div class="hero__media" aria-hidden="true">
+      <!-- ░░ ЗАМЕНИ на своё фото: положи файл assets/portrait.jpg ░░
+           Пока его нет — показывается placeholder (onerror ниже). -->
+      <img
+        class="hero__photo"
+        src="assets/portrait.jpg"
+        alt=""
+        onerror="this.onerror=null;this.src='assets/portrait-placeholder.svg'"
+      />
+      <div class="hero__scrim"></div>
+      <div class="hero__aura"></div>
+    </div>
     <div class="hero__content">
       <p class="hero__eyebrow reveal">alternative rock</p>
       <h1 class="hero__title reveal">YSHA</h1>
