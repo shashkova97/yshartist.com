@@ -23,7 +23,7 @@
     <path d="M196 560 q104 -150 208 0" stroke-opacity="0.22"/>
   </g>
   <text x="300" y="700" text-anchor="middle" fill="#5f6a64"
-        font-family="Cormorant Garamond, Georgia, serif" font-size="26"
+        font-family="Syne, Manrope, sans-serif" font-size="24"
         font-style="italic" letter-spacing="2">your photo here</text>
   <text x="300" y="734" text-anchor="middle" fill="#3a423d"
         font-family="Manrope, sans-serif" font-size="13" letter-spacing="3">

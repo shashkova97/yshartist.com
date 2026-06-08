@@ -1,7 +1,7 @@
 /* ============================================================
-   NAME — alternative rock
+   YSHA — alternative rock
    Тёмная элегантность: изумруд, пыльная роза, мягкое свечение.
-   Палитра подобрана под образ: нежность + настоящая сила и боль.
+   Шрифты: Syne (дисплейный) + Manrope (текст).
    ============================================================ */
 
 :root {
@@ -27,8 +27,8 @@
 
   --line:  rgba(236, 230, 224, 0.10);
 
-  --serif: "Cormorant Garamond", Georgia, serif;
-  --sans:  "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+  --display: "Syne", "Manrope", sans-serif;   /* дисплейный шрифт заголовков */
+  --sans:    "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --maxw: 1200px;
@@ -157,10 +157,10 @@ body::before {
   border-bottom: 1px solid var(--line);
 }
 .nav__logo {
-  font-family: var(--serif);
-  font-size: 1.55rem;
-  font-weight: 500;
-  letter-spacing: 0.22em;
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
   color: var(--text);
 }
 .nav__links { display: flex; gap: 2.6rem; }
@@ -220,10 +220,10 @@ body::before {
 }
 .mobile-menu.open { opacity: 1; pointer-events: auto; }
 .mobile-menu a {
-  font-family: var(--serif);
-  font-size: 2.4rem;
-  font-weight: 400;
-  letter-spacing: 0.05em;
+  font-family: var(--display);
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   color: var(--text);
 }
 .mobile-menu a:hover { color: var(--emerald); }
@@ -270,19 +270,19 @@ body::before {
   transition-delay: 0.1s;
 }
 .hero__title {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: clamp(4rem, 17vw, 12rem);
-  line-height: 0.92;
-  letter-spacing: 0.04em;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(3.6rem, 16vw, 11rem);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
   color: var(--text);
   text-shadow: 0 0 60px rgba(47, 158, 121, 0.25);
   transition-delay: 0.2s;
 }
 .hero__tagline {
-  font-family: var(--serif);
-  font-size: clamp(0.95rem, 4.2vw, 1.9rem);
-  font-weight: 300;
+  font-family: var(--display);
+  font-size: clamp(0.85rem, 3.8vw, 1.6rem);
+  font-weight: 400;
   line-height: 1.4;
   letter-spacing: 0.02em;
   color: var(--text-dim);
@@ -379,11 +379,11 @@ body::before {
 .about__frame img { width: 100%; height: 100%; object-fit: cover; }
 
 .about__heading {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(2rem, 5vw, 3.4rem);
-  line-height: 1.12;
-  letter-spacing: 0.01em;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.9rem, 4.6vw, 3.1rem);
+  line-height: 1.14;
+  letter-spacing: -0.01em;
   margin-bottom: 1.8rem;
 }
 .about__heading em { color: var(--emerald); }
@@ -394,10 +394,11 @@ body::before {
   max-width: 46ch;
 }
 .about__quote {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.5rem;
-  line-height: 1.45;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
   color: var(--rose);
   margin-top: 2.2rem;
   padding-left: 1.6rem;
@@ -418,10 +419,10 @@ body::before {
   text-align: center;
 }
 .music__heading {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(2.6rem, 7vw, 4.5rem);
-  letter-spacing: 0.02em;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.4rem, 6.4vw, 4.2rem);
+  letter-spacing: -0.01em;
 }
 
 .music__platforms {
@@ -508,10 +509,11 @@ body::before {
 }
 .contact__inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
 .contact__heading {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(2.6rem, 8vw, 5rem);
-  line-height: 1.05;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.3rem, 7vw, 4.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
   margin-bottom: 1.4rem;
 }
 .contact__heading em { color: var(--rose); }
@@ -522,9 +524,10 @@ body::before {
 }
 .contact__email {
   display: inline-block;
-  font-family: var(--serif);
-  font-size: clamp(1.5rem, 4vw, 2.4rem);
-  letter-spacing: 0.02em;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: clamp(1.2rem, 3.4vw, 2rem);
+  letter-spacing: 0.01em;
   color: var(--text);
   border-bottom: 1px solid var(--emerald-deep);
   padding-bottom: 0.3rem;
@@ -568,9 +571,10 @@ body::before {
   border-top: 1px solid var(--line);
 }
 .footer__name {
-  font-family: var(--serif);
+  font-family: var(--display);
+  font-weight: 700;
   font-size: 1.4rem;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   color: var(--text);
   margin-bottom: 0.6rem;
 }
