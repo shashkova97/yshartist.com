@@ -269,59 +269,78 @@ body::before {
   margin-bottom: 1.8rem;
   transition-delay: 0.1s;
 }
+/* Имя — контурные буквы: прозрачная заливка, тонкая обводка,
+   свечение просвечивает сквозь буквы. На hover — плавно заполняется. */
 .hero__title {
-  font-family: var(--display);
+  font-family: "Bricolage Grotesque", var(--display);
   font-weight: 800;
-  font-size: clamp(3.6rem, 16vw, 11rem);
-  line-height: 0.9;
-  letter-spacing: 0.02em;
-  color: var(--text);
-  text-shadow: 0 0 60px rgba(47, 158, 121, 0.25);
+  font-size: clamp(4.2rem, 21vw, 15rem);
+  line-height: 0.86;
+  letter-spacing: 0.005em;
+  color: transparent;
+  -webkit-text-stroke-width: clamp(1.4px, 0.34vw, 3px);
+  -webkit-text-stroke-color: var(--text);
+  filter: drop-shadow(0 0 55px rgba(47, 158, 121, 0.30));
+  transition: opacity 1s var(--ease), transform 1s var(--ease),
+              color 0.7s var(--ease), -webkit-text-stroke-color 0.7s var(--ease);
   transition-delay: 0.2s;
+  cursor: default;
 }
+.hero__title:hover {
+  color: var(--text);
+  -webkit-text-stroke-color: transparent;
+}
+
+/* Слоган — изящный Instrument Serif, курсив, в одну строку, один цвет */
 .hero__tagline {
-  font-family: var(--display);
-  font-size: clamp(0.85rem, 3.8vw, 1.6rem);
+  font-family: "Instrument Serif", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.15rem, 5vw, 2.2rem);
   font-weight: 400;
-  line-height: 1.4;
-  letter-spacing: 0.02em;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
   color: var(--text-dim);
-  margin-top: 1.6rem;
+  margin-top: 1.4rem;
   white-space: nowrap;          /* всегда в одну строку */
   transition-delay: 0.35s;
 }
-.hero__tagline em { font-style: italic; }
 
+/* CTA — не «таблетка»: минимальная подпись с растущей линией и стрелкой */
 .hero__cta {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
   margin-top: 2.8rem;
-  padding: 0.95rem 2.8rem;
+  padding-bottom: 0.4rem;
   font-family: var(--sans);
-  font-size: 0.8rem;
+  font-size: 0.74rem;
   font-weight: 500;
-  letter-spacing: 0.24em;
+  letter-spacing: 0.34em;
   text-transform: uppercase;
-  color: var(--text);
-  border: 1px solid rgba(47, 158, 121, 0.5);
-  border-radius: 100px;
+  color: var(--text-dim);
   position: relative;
-  overflow: hidden;
-  transition: color 0.5s var(--ease), border-color 0.5s var(--ease);
+  transition: opacity 1s var(--ease), transform 1s var(--ease), color 0.5s var(--ease);
   transition-delay: 0.5s;
-  z-index: 1;
 }
 .hero__cta::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, var(--emerald-deep), var(--emerald));
-  transform: scaleX(0);
+  left: 0; bottom: 0;
+  width: 100%; height: 1px;
+  background: linear-gradient(90deg, var(--emerald), var(--rose));
+  transform: scaleX(0.22);
   transform-origin: left;
   transition: transform 0.5s var(--ease);
-  z-index: -1;
 }
-.hero__cta:hover { color: #fff; border-color: var(--emerald); }
+.hero__cta::after {
+  content: "\2193";
+  font-size: 1.15em;
+  letter-spacing: 0;
+  transition: transform 0.45s var(--ease);
+}
+.hero__cta:hover { color: var(--text); }
 .hero__cta:hover::before { transform: scaleX(1); }
+.hero__cta:hover::after { transform: translateY(4px); }
 
 .hero__scroll {
   position: absolute;
