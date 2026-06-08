@@ -269,26 +269,25 @@ body::before {
   margin-bottom: 1.8rem;
   transition-delay: 0.1s;
 }
-/* Имя — контурные буквы: прозрачная заливка, тонкая обводка,
-   свечение просвечивает сквозь буквы. На hover — плавно заполняется. */
+/* Имя — крупный плотный гротеск с градиентной заливкой emerald→rose
+   прямо по буквам, с мягким свечением */
 .hero__title {
   font-family: "Bricolage Grotesque", var(--display);
   font-weight: 800;
   font-size: clamp(4.2rem, 21vw, 15rem);
   line-height: 0.86;
   letter-spacing: 0.005em;
+  background: linear-gradient(112deg,
+              var(--emerald) 0%,
+              var(--emerald) 30%,
+              var(--rose) 92%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: transparent;
-  -webkit-text-stroke-width: clamp(1.4px, 0.34vw, 3px);
-  -webkit-text-stroke-color: var(--text);
   filter: drop-shadow(0 0 55px rgba(47, 158, 121, 0.30));
-  transition: opacity 1s var(--ease), transform 1s var(--ease),
-              color 0.7s var(--ease), -webkit-text-stroke-color 0.7s var(--ease);
+  transition: opacity 1s var(--ease), transform 1s var(--ease);
   transition-delay: 0.2s;
-  cursor: default;
-}
-.hero__title:hover {
-  color: var(--text);
-  -webkit-text-stroke-color: transparent;
 }
 
 /* Слоган — изящный Instrument Serif, курсив, в одну строку, один цвет */
@@ -305,32 +304,20 @@ body::before {
   transition-delay: 0.35s;
 }
 
-/* CTA — не «таблетка»: минимальная подпись с растущей линией и стрелкой */
+/* CTA — скромная текстовая подпись без линии и рамки, с лёгкой стрелкой */
 .hero__cta {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.5rem;
   margin-top: 2.8rem;
-  padding-bottom: 0.4rem;
   font-family: var(--sans);
   font-size: 0.74rem;
   font-weight: 500;
   letter-spacing: 0.34em;
   text-transform: uppercase;
   color: var(--text-dim);
-  position: relative;
   transition: opacity 1s var(--ease), transform 1s var(--ease), color 0.5s var(--ease);
   transition-delay: 0.5s;
-}
-.hero__cta::before {
-  content: "";
-  position: absolute;
-  left: 0; bottom: 0;
-  width: 100%; height: 1px;
-  background: linear-gradient(90deg, var(--emerald), var(--rose));
-  transform: scaleX(0.22);
-  transform-origin: left;
-  transition: transform 0.5s var(--ease);
 }
 .hero__cta::after {
   content: "\2193";
@@ -339,7 +326,6 @@ body::before {
   transition: transform 0.45s var(--ease);
 }
 .hero__cta:hover { color: var(--text); }
-.hero__cta:hover::before { transform: scaleX(1); }
 .hero__cta:hover::after { transform: translateY(4px); }
 
 .hero__scroll {
