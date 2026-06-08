@@ -24,7 +24,7 @@
   </g>
   <text x="300" y="700" text-anchor="middle" fill="#5f6a64"
         font-family="Cormorant Garamond, Georgia, serif" font-size="26"
-        font-style="italic" letter-spacing="2">твоё фото здесь</text>
+        font-style="italic" letter-spacing="2">your photo here</text>
   <text x="300" y="734" text-anchor="middle" fill="#3a423d"
         font-family="Manrope, sans-serif" font-size="13" letter-spacing="3">
     assets/portrait.jpg</text>
