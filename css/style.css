@@ -281,14 +281,16 @@ body::before {
 }
 .hero__tagline {
   font-family: var(--serif);
-  font-size: clamp(1.3rem, 3.6vw, 2.1rem);
+  font-size: clamp(0.95rem, 4.2vw, 1.9rem);
   font-weight: 300;
   line-height: 1.4;
+  letter-spacing: 0.02em;
   color: var(--text-dim);
   margin-top: 1.6rem;
+  white-space: nowrap;          /* всегда в одну строку */
   transition-delay: 0.35s;
 }
-.hero__tagline em { color: var(--rose); font-style: italic; }
+.hero__tagline em { font-style: italic; }
 
 .hero__cta {
   display: inline-block;
