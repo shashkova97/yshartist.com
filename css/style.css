@@ -25,9 +25,14 @@
   --text-dim:    #9aa39d;
   --text-faint:  #5f6a64;
 
+  /* Имя / акцент-синий — глубокий сапфир, читаемый на тёмном фоне */
+  --ink:        #5a74d6;
+  --ink-deep:   #3a52b0;
+  --ink-glow:   rgba(90, 116, 214, 0.30);
+
   --line:  rgba(236, 230, 224, 0.10);
 
-  --display: "Playfair Display", Georgia, serif;   /* дисплейный шрифт заголовков */
+  --display: "Oswald", "Manrope", sans-serif;   /* дисплейный шрифт заголовков */
   --sans:    "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -305,19 +310,13 @@ body::before {
    прямо по буквам, с мягким свечением */
 .hero__title {
   font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(3.4rem, 7.5vw, 7.5rem);
-  line-height: 0.98;
-  letter-spacing: 0;
-  background: linear-gradient(118deg,
-              var(--emerald) 0%,
-              var(--emerald) 35%,
-              var(--rose) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  filter: drop-shadow(0 0 40px rgba(47, 158, 121, 0.25));
+  font-weight: 700;
+  font-size: clamp(4rem, 9vw, 9rem);
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-shadow: 0 0 50px var(--ink-glow);
   transition: opacity 1s var(--ease), transform 1s var(--ease);
   transition-delay: 0.2s;
 }
