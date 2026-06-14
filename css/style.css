@@ -288,8 +288,8 @@ body::before {
   z-index: 3;
   align-self: center;
   justify-self: start;
-  max-width: min(640px, 92vw);
-  padding: 7rem clamp(1.5rem, 4vw, 3.5rem) 4rem clamp(1.5rem, 6vw, 6rem);
+  max-width: min(540px, 46vw);
+  padding: 7rem clamp(1.5rem, 3vw, 3rem) 4rem clamp(1.5rem, 6vw, 6rem);
 }
 
 .hero__eyebrow {
@@ -306,35 +306,32 @@ body::before {
 .hero__title {
   font-family: "Bricolage Grotesque", var(--display);
   font-weight: 800;
-  font-size: clamp(4.2rem, 21vw, 15rem);
-  line-height: 0.86;
+  font-size: clamp(3rem, 6.5vw, 6.5rem);
+  line-height: 0.92;
   letter-spacing: 0.005em;
-  background: linear-gradient(112deg,
+  background: linear-gradient(118deg,
               var(--emerald) 0%,
-              var(--emerald) 30%,
-              var(--rose) 92%);
+              var(--emerald) 35%,
+              var(--rose) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
-  filter: drop-shadow(0 0 55px rgba(47, 158, 121, 0.30))
-          drop-shadow(0 6px 26px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 0 40px rgba(47, 158, 121, 0.25));
   transition: opacity 1s var(--ease), transform 1s var(--ease);
   transition-delay: 0.2s;
 }
 
-/* Слоган — изящный Instrument Serif, курсив, в одну строку, один цвет */
+/* Слоган — изящный Instrument Serif, курсив, один цвет */
 .hero__tagline {
   font-family: "Instrument Serif", Georgia, serif;
   font-style: italic;
-  font-size: clamp(1.15rem, 5vw, 2.2rem);
+  font-size: clamp(1.2rem, 2.6vw, 1.9rem);
   font-weight: 400;
   line-height: 1.3;
   letter-spacing: 0.01em;
-  color: var(--text);
-  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.55);
+  color: var(--text-dim);
   margin-top: 1.4rem;
-  white-space: nowrap;          /* всегда в одну строку */
   transition-delay: 0.35s;
 }
 
