@@ -25,10 +25,10 @@
   --text-dim:    #9aa39d;
   --text-faint:  #5f6a64;
 
-  /* Имя / акцент-синий — глубокий сапфир, читаемый на тёмном фоне */
-  --ink:        #5a74d6;
-  --ink-deep:   #3a52b0;
-  --ink-glow:   rgba(90, 116, 214, 0.30);
+  /* Имя / акцент-синий — глубокий полуночный, почти чёрный */
+  --ink:        #1f2a55;
+  --ink-deep:   #161e3e;
+  --ink-glow:   rgba(70, 95, 190, 0.34);
 
   --line:  rgba(236, 230, 224, 0.10);
 
@@ -313,13 +313,17 @@ body::before {
   font-weight: 700;
   font-size: clamp(4rem, 9vw, 9rem);
   line-height: 0.9;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--ink);
-  text-shadow: 0 0 50px var(--ink-glow);
+  text-shadow: 0 0 55px var(--ink-glow);
+  transform-origin: left center;
   transition: opacity 1s var(--ease), transform 1s var(--ease);
   transition-delay: 0.2s;
 }
+/* Растягиваем имя вширь (Oswald узкий) — учитываем reveal-анимацию */
+.hero__title.reveal    { transform: translateY(28px) scaleX(1.32); }
+.hero__title.reveal.in { transform: scaleX(1.32); }
 
 /* CTA — скромная текстовая подпись без линии и рамки, с лёгкой стрелкой */
 .hero__cta {
