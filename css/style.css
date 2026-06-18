@@ -162,10 +162,10 @@ body::before {
   border-bottom: 1px solid var(--line);
 }
 .nav__logo {
-  font-family: var(--display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
+  font-family: "Italiana", serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: 0.24em;
   color: var(--text);
 }
 .nav__links { display: flex; gap: 2.6rem; }
@@ -315,14 +315,14 @@ body::before {
   margin-bottom: 1.8rem;
   transition-delay: 0.1s;
 }
-/* Имя — крупный высококонтрастный serif, широкий трекинг,
-   кремовый поверх navy, с мягким свечением (editorial, чувственно) */
+/* Имя — Italiana: нежный воздушный serif, широкий трекинг,
+   кремовый поверх navy, с мягким свечением */
 .hero__title {
-  font-family: var(--display);
-  font-weight: 500;
+  font-family: "Italiana", serif;
+  font-weight: 400;
   font-size: clamp(4rem, 9.5vw, 9.5rem);
   line-height: 0.95;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink);
   text-shadow: 0 0 55px var(--ink-glow);
