@@ -32,7 +32,7 @@
 
   --line:  rgba(236, 230, 224, 0.10);
 
-  --display: "Oswald", "Manrope", sans-serif;   /* дисплейный шрифт заголовков */
+  --display: "Playfair Display", Georgia, serif;   /* высококонтрастный serif — чувственный editorial */
   --sans:    "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
 
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -65,6 +65,7 @@ body::before {
   inset: 0;
   z-index: -2;
   background:
+    radial-gradient(140% 120% at 50% 28%, transparent 52%, rgba(6, 9, 26, 0.6) 100%),
     radial-gradient(900px 700px at 15% -5%, rgba(125, 151, 214, 0.16), transparent 60%),
     radial-gradient(800px 800px at 100% 30%, rgba(185, 198, 232, 0.08), transparent 55%),
     radial-gradient(700px 700px at 50% 110%, rgba(79, 104, 170, 0.14), transparent 60%),
@@ -306,14 +307,14 @@ body::before {
   margin-bottom: 1.8rem;
   transition-delay: 0.1s;
 }
-/* Имя — крупный плотный гротеск с градиентной заливкой emerald→rose
-   прямо по буквам, с мягким свечением */
+/* Имя — крупный высококонтрастный serif, широкий трекинг,
+   кремовый поверх navy, с мягким свечением (editorial, чувственно) */
 .hero__title {
   font-family: var(--display);
-  font-weight: 700;
-  font-size: clamp(4rem, 9vw, 9rem);
-  line-height: 0.9;
-  letter-spacing: 0.04em;
+  font-weight: 500;
+  font-size: clamp(4rem, 9.5vw, 9.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--ink);
   text-shadow: 0 0 55px var(--ink-glow);
@@ -321,9 +322,8 @@ body::before {
   transition: opacity 1s var(--ease), transform 1s var(--ease);
   transition-delay: 0.2s;
 }
-/* Растягиваем имя вширь (Oswald узкий) — учитываем reveal-анимацию */
-.hero__title.reveal    { transform: translateY(28px) scaleX(1.32); }
-.hero__title.reveal.in { transform: scaleX(1.32); }
+.hero__title.reveal    { transform: translateY(28px); }
+.hero__title.reveal.in { transform: none; }
 
 /* CTA — скромная текстовая подпись без линии и рамки, с лёгкой стрелкой */
 .hero__cta {
@@ -412,7 +412,7 @@ body::before {
   letter-spacing: -0.01em;
   margin-bottom: 1.8rem;
 }
-.about__heading em { color: var(--emerald); }
+.about__heading em { color: var(--emerald); font-style: italic; font-weight: 500; }
 .about__text p {
   color: var(--text-dim);
   font-size: 1.05rem;
@@ -542,7 +542,7 @@ body::before {
   letter-spacing: -0.01em;
   margin-bottom: 1.4rem;
 }
-.contact__heading em { color: var(--rose); }
+.contact__heading em { color: var(--rose); font-style: italic; font-weight: 500; }
 .contact__sub {
   color: var(--text-dim);
   font-size: 1.1rem;
