@@ -257,7 +257,7 @@ body::before {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 18%;   /* держим лицо в кадре */
+  object-position: center 34%;   /* держим лицо в кадре */
 }
 /* Левый край фото мягко растворяется в тёмном фоне текстовой части */
 .hero__figure::before {
@@ -626,7 +626,7 @@ body::before {
     inset: 0;
     z-index: 0;
   }
-  .hero__figure img { object-position: center 20%; }
+  .hero__figure img { object-position: center 30%; }
   .hero__figure::before {
     background: linear-gradient(to top,
       rgba(17, 23, 58, 0.95) 0%,
