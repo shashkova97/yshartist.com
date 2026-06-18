@@ -258,6 +258,16 @@ body::before {
   height: 100%;
   object-fit: cover;
   object-position: center 34%;   /* держим лицо в кадре */
+  /* Растворяем края фото в прозрачность — сквозь них проступает фон сайта,
+     поэтому «коробки» не видно, фото сливается с фоном */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 30%),
+    linear-gradient(to bottom, transparent 0%, #000 13%, #000 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 30%),
+    linear-gradient(to bottom, transparent 0%, #000 13%, #000 88%, transparent 100%);
+  mask-composite: intersect;
 }
 /* Левый край фото мягко растворяется в тёмном фоне текстовой части */
 .hero__figure::before {
@@ -265,8 +275,7 @@ body::before {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to right, var(--bg) 0%, rgba(17,23,58,0) 24%),
-    linear-gradient(to top, rgba(17,23,58,0.5) 0%, transparent 30%);
+    linear-gradient(to top, rgba(17,23,58,0.45) 0%, transparent 26%);
   z-index: 2;
   pointer-events: none;
 }
@@ -626,7 +635,11 @@ body::before {
     inset: 0;
     z-index: 0;
   }
-  .hero__figure img { object-position: center 30%; }
+  .hero__figure img {
+    object-position: center 30%;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
   .hero__figure::before {
     background: linear-gradient(to top,
       rgba(17, 23, 58, 0.95) 0%,
