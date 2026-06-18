@@ -258,24 +258,17 @@ body::before {
   height: 100%;
   object-fit: cover;
   object-position: center 34%;   /* держим лицо в кадре */
-  /* Растушёвываем все четыре края фото — дымок плавно угасает в фон
-     со всех сторон, а не обрубается ровной линией */
-  -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, #000 34%, #000 80%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 11%, #000 84%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-image:
-    linear-gradient(to right, transparent 0%, #000 34%, #000 80%, transparent 100%),
-    linear-gradient(to bottom, transparent 0%, #000 11%, #000 84%, transparent 100%);
-  mask-composite: intersect;
+  /* Овальное растворение вокруг фигуры — гаснет органично по кругу,
+     без прямых линий и диагональных швов в углах */
+  -webkit-mask-image: radial-gradient(ellipse 80% 84% at 60% 44%, #000 44%, transparent 100%);
+          mask-image: radial-gradient(ellipse 80% 84% at 60% 44%, #000 44%, transparent 100%);
 }
 /* Левый край фото мягко растворяется в тёмном фоне текстовой части */
 .hero__figure::before {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(to top, rgba(10,16,40,0.45) 0%, transparent 26%);
+  background: none;
   z-index: 2;
   pointer-events: none;
 }
