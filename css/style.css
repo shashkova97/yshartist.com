@@ -1,34 +1,34 @@
 /* ============================================================
    YSHA — alternative rock
-   Тёмная элегантность: изумруд, пыльная роза, мягкое свечение.
-   Шрифты: Playfair Display (дисплейный) + Manrope (текст).
+   Глубокий navy (Dior): кремовый текст, стальной-синий акцент.
+   Шрифты: Oswald (дисплейный) + Manrope (текст).
    ============================================================ */
 
 :root {
-  /* Фон — глубокий чёрно-изумрудный, не плоский чёрный */
-  --bg:        #0a100e;
-  --bg-soft:   #0e1714;
-  --bg-elev:   #121d19;
+  /* Фон — глубокий navy (Dior), не плоский */
+  --bg:        #11173a;
+  --bg-soft:   #161d44;
+  --bg-elev:   #1d2550;
 
-  /* Главный акцент — тёмный изумруд со свечением */
-  --emerald:        #2f9e79;
-  --emerald-deep:   #1c6b51;
-  --emerald-glow:   rgba(47, 158, 121, 0.35);
+  /* Главный акцент — светло-стальной синий со свечением */
+  --emerald:        #7d97d6;
+  --emerald-deep:   #4f68aa;
+  --emerald-glow:   rgba(125, 151, 214, 0.35);
 
-  /* Тёплый акцент — пыльная роза / розовое золото (нежность) */
-  --rose:        #d9a8a0;
-  --rose-soft:   #c98f86;
-  --rose-glow:   rgba(217, 168, 160, 0.22);
+  /* Вторичный акцент — бледная барвинково-голубая дымка */
+  --rose:        #b9c6e8;
+  --rose-soft:   #a6b6dd;
+  --rose-glow:   rgba(185, 198, 232, 0.22);
 
-  /* Текст — мягкий тёплый белый */
+  /* Текст — мягкий тёплый крем */
   --text:        #ece6e0;
-  --text-dim:    #9aa39d;
-  --text-faint:  #5f6a64;
+  --text-dim:    #aab2cc;
+  --text-faint:  #6a7295;
 
-  /* Имя / акцент-синий — Pantone Neon Navy, ещё темнее (почти чёрный) */
-  --ink:        #11152e;
-  --ink-deep:   #0c0f22;
-  --ink-glow:   rgba(60, 82, 170, 0.40);
+  /* Имя YSHA — кремовый поверх navy (как DIOR на коробке) */
+  --ink:        #f0ebe4;
+  --ink-deep:   #d8d2c8;
+  --ink-glow:   rgba(180, 195, 235, 0.20);
 
   --line:  rgba(236, 230, 224, 0.10);
 
@@ -65,9 +65,9 @@ body::before {
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(900px 700px at 15% -5%, rgba(47, 158, 121, 0.14), transparent 60%),
-    radial-gradient(800px 800px at 100% 30%, rgba(217, 168, 160, 0.08), transparent 55%),
-    radial-gradient(700px 700px at 50% 110%, rgba(28, 107, 81, 0.12), transparent 60%),
+    radial-gradient(900px 700px at 15% -5%, rgba(125, 151, 214, 0.16), transparent 60%),
+    radial-gradient(800px 800px at 100% 30%, rgba(185, 198, 232, 0.08), transparent 55%),
+    radial-gradient(700px 700px at 50% 110%, rgba(79, 104, 170, 0.14), transparent 60%),
     var(--bg);
 }
 
@@ -157,7 +157,7 @@ body::before {
 .nav.scrolled {
   padding-top: 1.1rem;
   padding-bottom: 1.1rem;
-  background: rgba(10, 16, 14, 0.72);
+  background: rgba(17, 23, 58, 0.72);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
 }
@@ -212,7 +212,7 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: 90;
-  background: rgba(10, 16, 14, 0.97);
+  background: rgba(17, 23, 58, 0.97);
   backdrop-filter: blur(20px);
   display: flex;
   flex-direction: column;
@@ -264,8 +264,8 @@ body::before {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to right, var(--bg) 0%, rgba(10,16,14,0) 24%),
-    linear-gradient(to top, rgba(10,16,14,0.5) 0%, transparent 30%);
+    linear-gradient(to right, var(--bg) 0%, rgba(17,23,58,0) 24%),
+    linear-gradient(to top, rgba(17,23,58,0.5) 0%, transparent 30%);
   z-index: 2;
   pointer-events: none;
 }
@@ -399,7 +399,7 @@ body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(10,16,14,0.5));
+  background: linear-gradient(180deg, transparent 40%, rgba(17,23,58,0.5));
   pointer-events: none;
 }
 .about__frame img { width: 100%; height: 100%; object-fit: cover; }
@@ -437,7 +437,7 @@ body::before {
 .music {
   padding: clamp(6rem, 14vh, 11rem) clamp(1.5rem, 5vw, 4rem);
   background:
-    linear-gradient(180deg, transparent, rgba(18, 29, 25, 0.5), transparent);
+    linear-gradient(180deg, transparent, rgba(29, 37, 80, 0.5), transparent);
 }
 .music__head {
   max-width: var(--maxw);
@@ -472,7 +472,7 @@ body::before {
 .platform:hover {
   color: var(--text);
   border-color: var(--emerald);
-  background: rgba(47, 158, 121, 0.08);
+  background: rgba(125, 151, 214, 0.08);
   transform: translateY(-3px);
 }
 
@@ -492,7 +492,7 @@ body::before {
   transition: border-color 0.5s var(--ease), box-shadow 0.5s var(--ease);
 }
 .player:hover {
-  border-color: rgba(47, 158, 121, 0.4);
+  border-color: rgba(125, 151, 214, 0.4);
   box-shadow: 0 30px 60px -30px var(--emerald-glow);
 }
 .player iframe { width: 100%; display: block; border: 0; }
@@ -629,9 +629,9 @@ body::before {
   .hero__figure img { object-position: center 20%; }
   .hero__figure::before {
     background: linear-gradient(to top,
-      rgba(10, 16, 14, 0.95) 0%,
-      rgba(10, 16, 14, 0.55) 32%,
-      rgba(10, 16, 14, 0.25) 58%,
+      rgba(17, 23, 58, 0.95) 0%,
+      rgba(17, 23, 58, 0.55) 32%,
+      rgba(17, 23, 58, 0.25) 58%,
       transparent 80%);
   }
   .hero__aura { left: 50%; top: 38%; }
