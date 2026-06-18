@@ -5,10 +5,10 @@
    ============================================================ */
 
 :root {
-  /* Фон — глубокий navy (Dior), не плоский */
-  --bg:        #11173a;
-  --bg-soft:   #161d44;
-  --bg-elev:   #1d2550;
+  /* Фон — глубокий navy под цвет фона фото (почти #070f29) */
+  --bg:        #0a1028;
+  --bg-soft:   #0e1433;
+  --bg-elev:   #141b40;
 
   /* Главный акцент — светло-стальной синий со свечением */
   --emerald:        #7d97d6;
@@ -65,10 +65,9 @@ body::before {
   inset: 0;
   z-index: -2;
   background:
-    radial-gradient(140% 120% at 50% 28%, transparent 52%, rgba(6, 9, 26, 0.6) 100%),
-    radial-gradient(900px 700px at 15% -5%, rgba(125, 151, 214, 0.16), transparent 60%),
-    radial-gradient(800px 800px at 100% 30%, rgba(185, 198, 232, 0.08), transparent 55%),
-    radial-gradient(700px 700px at 50% 110%, rgba(79, 104, 170, 0.14), transparent 60%),
+    radial-gradient(140% 120% at 50% 28%, transparent 50%, rgba(4, 6, 20, 0.7) 100%),
+    radial-gradient(900px 700px at 12% 12%, rgba(125, 151, 214, 0.08), transparent 55%),
+    radial-gradient(700px 700px at 50% 112%, rgba(79, 104, 170, 0.07), transparent 60%),
     var(--bg);
 }
 
@@ -158,7 +157,7 @@ body::before {
 .nav.scrolled {
   padding-top: 1.1rem;
   padding-bottom: 1.1rem;
-  background: rgba(17, 23, 58, 0.72);
+  background: rgba(10, 16, 40, 0.72);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line);
 }
@@ -213,7 +212,7 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: 90;
-  background: rgba(17, 23, 58, 0.97);
+  background: rgba(10, 16, 40, 0.97);
   backdrop-filter: blur(20px);
   display: flex;
   flex-direction: column;
@@ -275,7 +274,7 @@ body::before {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to top, rgba(17,23,58,0.45) 0%, transparent 26%);
+    linear-gradient(to top, rgba(10,16,40,0.45) 0%, transparent 26%);
   z-index: 2;
   pointer-events: none;
 }
@@ -283,19 +282,19 @@ body::before {
 /* Изумрудное свечение позади текста слева */
 .hero__aura {
   position: absolute;
-  top: 46%; left: 30%;
-  width: 85vmin; height: 85vmin;
+  top: 52%; left: 20%;
+  width: 64vmin; height: 64vmin;
   transform: translate(-50%, -50%);
   background:
     radial-gradient(circle at 50% 50%, var(--emerald-glow), transparent 62%),
     radial-gradient(circle at 60% 70%, var(--rose-glow), transparent 55%);
-  filter: blur(28px);
+  filter: blur(34px);
   z-index: 0;
   animation: breathe 11s ease-in-out infinite;
 }
 @keyframes breathe {
-  0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 0.8; }
-  50%     { transform: translate(-50%,-50%) scale(1.12); opacity: 1; }
+  0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 0.4; }
+  50%     { transform: translate(-50%,-50%) scale(1.12); opacity: 0.55; }
 }
 
 .hero__content {
@@ -408,7 +407,7 @@ body::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(17,23,58,0.5));
+  background: linear-gradient(180deg, transparent 40%, rgba(10,16,40,0.5));
   pointer-events: none;
 }
 .about__frame img { width: 100%; height: 100%; object-fit: cover; }
@@ -446,7 +445,7 @@ body::before {
 .music {
   padding: clamp(6rem, 14vh, 11rem) clamp(1.5rem, 5vw, 4rem);
   background:
-    linear-gradient(180deg, transparent, rgba(29, 37, 80, 0.5), transparent);
+    linear-gradient(180deg, transparent, rgba(20, 27, 64, 0.5), transparent);
 }
 .music__head {
   max-width: var(--maxw);
@@ -642,9 +641,9 @@ body::before {
   }
   .hero__figure::before {
     background: linear-gradient(to top,
-      rgba(17, 23, 58, 0.95) 0%,
-      rgba(17, 23, 58, 0.55) 32%,
-      rgba(17, 23, 58, 0.25) 58%,
+      rgba(10, 16, 40, 0.95) 0%,
+      rgba(10, 16, 40, 0.55) 32%,
+      rgba(10, 16, 40, 0.25) 58%,
       transparent 80%);
   }
   .hero__aura { left: 50%; top: 38%; }
