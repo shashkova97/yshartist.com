@@ -286,15 +286,14 @@ body::before {
   height: 100%;
   object-fit: cover;
   object-position: center 28%;   /* держим лицо в кадре */
-  /* Растворяем края фото в прозрачность — сквозь них проступает фон сайта,
-     поэтому «коробки» не видно, фото сливается с фоном */
+  /* Лёгкая растушёвка краёв — рамка кадра мягко тает, фон не убираем */
   -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, #000 30%),
-    linear-gradient(to bottom, transparent 0%, #000 13%, #000 88%, transparent 100%);
+    linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 9%, #000 91%, transparent 100%);
   -webkit-mask-composite: source-in;
   mask-image:
-    linear-gradient(to right, transparent 0%, #000 30%),
-    linear-gradient(to bottom, transparent 0%, #000 13%, #000 88%, transparent 100%);
+    linear-gradient(to right, transparent 0%, #000 9%, #000 91%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 9%, #000 91%, transparent 100%);
   mask-composite: intersect;
 }
 /* Левый край фото мягко растворяется в тёмном фоне текстовой части */
