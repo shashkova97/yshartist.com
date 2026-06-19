@@ -53,6 +53,31 @@
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
 
+  /* ---- Видео в шапке: надёжный автозапуск ---- */
+  var heroVid = document.querySelector(".hero__media");
+  if (heroVid) {
+    heroVid.muted = true;
+    heroVid.playsInline = true;
+    heroVid.setAttribute("muted", "");
+    var tryPlay = function () {
+      var p = heroVid.play();
+      if (p && typeof p.catch === "function") p.catch(function () {});
+    };
+    tryPlay();
+    heroVid.addEventListener("loadeddata", tryPlay, { once: true });
+    heroVid.addEventListener("canplay", tryPlay, { once: true });
+    // Подстраховка: если браузер заблокировал автозапуск — стартуем при первом действии
+    var kick = function () {
+      tryPlay();
+      window.removeEventListener("touchstart", kick);
+      window.removeEventListener("click", kick);
+      window.removeEventListener("scroll", kick);
+    };
+    window.addEventListener("touchstart", kick, { once: true, passive: true });
+    window.addEventListener("click", kick, { once: true });
+    window.addEventListener("scroll", kick, { once: true, passive: true });
+  }
+
   /* ---- Плавающие пылинки в свете свечей ---- */
   var dust = document.querySelector(".dust");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
