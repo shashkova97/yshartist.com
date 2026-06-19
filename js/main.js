@@ -134,8 +134,8 @@
     function enableGyro() {
       window.addEventListener("deviceorientation", function (e) {
         if (e.gamma == null) return;
-        tX = Math.max(-1, Math.min(1, e.gamma / 18));
-        tY = Math.max(-1, Math.min(1, (e.beta - 45) / 18));
+        tX = Math.max(-1, Math.min(1, e.gamma / 12));
+        tY = Math.max(-1, Math.min(1, (e.beta - 45) / 12));
       }, { passive: true });
     }
     if (typeof DeviceOrientationEvent !== "undefined" &&
@@ -157,10 +157,10 @@
       var vh = window.innerHeight || 1;
       var sy = Math.min(window.scrollY, vh); // параллакс только в пределах шапки
       pImg.style.transform =
-        "translate3d(" + (smX * -10) + "px," + (sy * 0.05 + smY * -8) + "px,0) scale(1.14)";
+        "translate3d(" + (smX * -20) + "px," + (sy * 0.05 + smY * -16) + "px,0) scale(1.16)";
       if (pContent) {
         pContent.style.transform =
-          "translate3d(" + (smX * 14) + "px," + (sy * -0.05 + smY * 10) + "px,0)";
+          "translate3d(" + (smX * 24) + "px," + (sy * -0.05 + smY * 18) + "px,0)";
       }
       requestAnimationFrame(ploop);
     })();
