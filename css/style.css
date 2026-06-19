@@ -282,6 +282,15 @@ body::before {
   height: 100%;
   z-index: 1;
   overflow: hidden;
+  /* Растворяем края фото в прозрачность (как на мобильном) — сквозь них фон сайта */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 24%, #000 90%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 12%, #000 86%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 24%, #000 90%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 12%, #000 86%, transparent 100%);
+  mask-composite: intersect;
 }
 .hero__figure img,
 .hero__figure video {
@@ -294,21 +303,21 @@ body::before {
 /* Движущийся дымок поверх фото — постоянный медленный дрейф */
 .hero__smoke {
   position: absolute;
-  inset: -25%;
+  inset: -30%;
   z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(38% 30% at 30% 38%, rgba(190, 198, 224, 0.10), transparent 60%),
-    radial-gradient(44% 36% at 68% 60%, rgba(150, 142, 162, 0.09), transparent 62%),
-    radial-gradient(32% 38% at 56% 28%, rgba(205, 200, 215, 0.07), transparent 60%);
-  filter: blur(34px);
+    radial-gradient(40% 32% at 28% 36%, rgba(200, 206, 228, 0.20), transparent 60%),
+    radial-gradient(46% 38% at 70% 62%, rgba(150, 144, 166, 0.18), transparent 62%),
+    radial-gradient(34% 40% at 56% 26%, rgba(210, 206, 220, 0.15), transparent 60%);
+  filter: blur(26px);
   mix-blend-mode: screen;
-  animation: smokeDrift 28s ease-in-out infinite alternate;
+  animation: smokeDrift 22s ease-in-out infinite alternate;
   will-change: transform;
 }
 @keyframes smokeDrift {
-  0%   { transform: translate3d(-3%, 2%, 0) scale(1.05) rotate(0deg); }
-  100% { transform: translate3d(4%, -3%, 0) scale(1.18) rotate(5deg); }
+  0%   { transform: translate3d(-6%, 3%, 0) scale(1.0) rotate(-2deg); }
+  100% { transform: translate3d(7%, -5%, 0) scale(1.22) rotate(4deg); }
 }
 
 /* Мягкая растушёвка краёв — статичные градиенты цветом фона (лёгкие для GPU) */
@@ -318,11 +327,7 @@ body::before {
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  background:
-    linear-gradient(to right, var(--bg) 0%, rgba(10,16,40,0) 30%),
-    linear-gradient(to left,  var(--bg) 0%, rgba(10,16,40,0) 18%),
-    linear-gradient(to top,    var(--bg) 0%, rgba(10,16,40,0) 20%),
-    linear-gradient(to bottom, var(--bg) 0%, rgba(10,16,40,0) 20%);
+  background: none;
 }
 
 /* Изумрудное свечение позади текста слева */
