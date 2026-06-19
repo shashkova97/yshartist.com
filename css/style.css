@@ -685,6 +685,9 @@ body::before {
     position: absolute;
     inset: 0;
     z-index: 0;
+    /* Низ фото растворяется в прозрачность — сквозь него виден фон сайта, грани нет */
+    -webkit-mask-image: linear-gradient(to bottom, #000 48%, transparent 88%);
+    mask-image: linear-gradient(to bottom, #000 48%, transparent 88%);
   }
   .hero__figure img,
   .hero__figure video {
@@ -695,8 +698,7 @@ body::before {
   /* Ореол позади имени + сильное растворение нижнего края фото в фон */
   .hero__figure::before {
     background:
-      radial-gradient(80% 36% at 50% 64%, rgba(10, 16, 40, 0.5), transparent 72%),
-      linear-gradient(to bottom, transparent 28%, rgba(10, 16, 40, 0.6) 56%, var(--bg) 84%);
+      radial-gradient(80% 36% at 50% 62%, rgba(10, 16, 40, 0.5), transparent 72%);
   }
   .hero__aura { left: 50%; top: 60%; }
   .hero__content {
