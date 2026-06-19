@@ -66,8 +66,9 @@ body::before {
   z-index: -2;
   background:
     radial-gradient(140% 120% at 50% 28%, transparent 50%, rgba(4, 6, 20, 0.7) 100%),
-    radial-gradient(900px 700px at 12% 12%, rgba(125, 151, 214, 0.08), transparent 55%),
-    radial-gradient(700px 700px at 50% 112%, rgba(79, 104, 170, 0.07), transparent 60%),
+    radial-gradient(820px 700px at 22% 88%, rgba(156, 116, 78, 0.06), transparent 60%),
+    radial-gradient(900px 700px at 12% 12%, rgba(125, 151, 214, 0.07), transparent 55%),
+    radial-gradient(700px 700px at 50% 112%, rgba(79, 104, 170, 0.06), transparent 60%),
     var(--bg);
 }
 
@@ -79,7 +80,7 @@ body::before {
   pointer-events: none;
   opacity: 0.045;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation: grain 8s steps(8) infinite;
+  animation: grain 12s steps(8) infinite;
 }
 @keyframes grain {
   0%,100% { transform: translate(0,0); }
@@ -108,8 +109,8 @@ body::before {
 /* ---------- Появление при скролле ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 1s var(--ease), transform 1s var(--ease);
+  transform: translateY(34px);
+  transition: opacity 1.6s var(--ease), transform 1.6s var(--ease);
 }
 .reveal.in { opacity: 1; transform: none; }
 
@@ -290,7 +291,7 @@ body::before {
     radial-gradient(circle at 60% 70%, var(--rose-glow), transparent 55%);
   filter: blur(34px);
   z-index: 0;
-  animation: breathe 11s ease-in-out infinite;
+  animation: breathe 18s ease-in-out infinite;
 }
 @keyframes breathe {
   0%,100% { transform: translate(-50%,-50%) scale(1); opacity: 0.4; }
