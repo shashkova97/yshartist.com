@@ -91,6 +91,31 @@ body::before {
   90% { transform: translate(-3%,3%); }
 }
 
+/* Плавающие пылинки в свете свечей */
+.dust {
+  position: fixed;
+  inset: 0;
+  z-index: 9996;
+  pointer-events: none;
+  overflow: hidden;
+}
+.dust span {
+  position: absolute;
+  bottom: -12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(214, 188, 150, 0.9), rgba(214, 188, 150, 0) 70%);
+  opacity: 0;
+  animation-name: floatUp;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+@keyframes floatUp {
+  0%   { transform: translate(0, 0); opacity: 0; }
+  12%  { opacity: var(--o, 0.4); }
+  88%  { opacity: var(--o, 0.4); }
+  100% { transform: translate(var(--dx, 24px), -112vh); opacity: 0; }
+}
+
 /* Свечение за курсором */
 .cursor-glow {
   position: fixed;
@@ -228,10 +253,10 @@ body::before {
 }
 .mobile-menu.open { opacity: 1; pointer-events: auto; }
 .mobile-menu a {
-  font-family: var(--display);
+  font-family: "Italiana", serif;
   font-size: 2.2rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+  font-weight: 400;
+  letter-spacing: 0.08em;
   color: var(--text);
 }
 .mobile-menu a:hover { color: var(--emerald); }
@@ -477,9 +502,9 @@ body::before {
   text-align: center;
 }
 .music__heading {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: clamp(2.4rem, 6.4vw, 4.2rem);
+  font-family: "Unbounded", sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.9rem, 4.6vw, 3rem);
   letter-spacing: -0.01em;
 }
 
@@ -567,14 +592,14 @@ body::before {
 }
 .contact__inner { position: relative; z-index: 1; max-width: 720px; margin: 0 auto; }
 .contact__heading {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: clamp(2.3rem, 7vw, 4.4rem);
-  line-height: 1.08;
+  font-family: "Unbounded", sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  line-height: 1.25;
   letter-spacing: -0.01em;
   margin-bottom: 1.4rem;
 }
-.contact__heading em { color: var(--rose); font-style: italic; font-weight: 500; }
+.contact__heading em { color: var(--rose); font-style: normal; font-weight: 300; }
 .contact__sub {
   color: var(--text-dim);
   font-size: 1.1rem;
@@ -629,10 +654,10 @@ body::before {
   border-top: 1px solid var(--line);
 }
 .footer__name {
-  font-family: var(--display);
-  font-weight: 700;
-  font-size: 1.4rem;
-  letter-spacing: 0.2em;
+  font-family: "Italiana", serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  letter-spacing: 0.24em;
   color: var(--text);
   margin-bottom: 0.6rem;
 }

@@ -53,6 +53,28 @@
     reveals.forEach(function (el) { el.classList.add("in"); });
   }
 
+  /* ---- Плавающие пылинки в свете свечей ---- */
+  var dust = document.querySelector(".dust");
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (dust && !reduceMotion) {
+    var COUNT = window.innerWidth < 700 ? 14 : 26;
+    var frag = document.createDocumentFragment();
+    for (var i = 0; i < COUNT; i++) {
+      var s = document.createElement("span");
+      var size = 1.5 + Math.random() * 3.5;          // 1.5–5px
+      var dur = 20 + Math.random() * 22;             // 20–42s
+      s.style.left = Math.random() * 100 + "vw";
+      s.style.width = size + "px";
+      s.style.height = size + "px";
+      s.style.animationDuration = dur + "s";
+      s.style.animationDelay = -Math.random() * dur + "s";
+      s.style.setProperty("--dx", (Math.random() * 80 - 40) + "px");
+      s.style.setProperty("--o", (0.12 + Math.random() * 0.4).toFixed(2));
+      frag.appendChild(s);
+    }
+    dust.appendChild(frag);
+  }
+
   /* ---- Свечение за курсором (только для мыши) ---- */
   var glow = document.querySelector(".cursor-glow");
   if (glow && window.matchMedia("(hover: hover)").matches) {
