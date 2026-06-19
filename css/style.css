@@ -295,10 +295,10 @@ body::before {
   z-index: 2;
   pointer-events: none;
   background:
-    linear-gradient(to right, var(--bg) 0%, rgba(10,16,40,0) 16%),
-    linear-gradient(to left,  var(--bg) 0%, rgba(10,16,40,0) 9%),
-    linear-gradient(to top,    var(--bg) 0%, rgba(10,16,40,0) 10%),
-    linear-gradient(to bottom, var(--bg) 0%, rgba(10,16,40,0) 10%);
+    linear-gradient(to right, var(--bg) 0%, rgba(10,16,40,0) 30%),
+    linear-gradient(to left,  var(--bg) 0%, rgba(10,16,40,0) 18%),
+    linear-gradient(to top,    var(--bg) 0%, rgba(10,16,40,0) 20%),
+    linear-gradient(to bottom, var(--bg) 0%, rgba(10,16,40,0) 20%);
 }
 
 /* Изумрудное свечение позади текста слева */
