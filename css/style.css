@@ -279,9 +279,11 @@ body::before {
   position: relative;
   height: 100%;
   z-index: 1;
+  overflow: hidden;
 }
 .hero__figure img,
 .hero__figure video {
+  will-change: transform;
   width: 100%;
   height: 100%;
   object-fit: cover;

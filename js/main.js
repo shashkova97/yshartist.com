@@ -115,4 +115,54 @@
       requestAnimationFrame(loop);
     })();
   }
+
+  /* ---- Параллакс: скролл + наклон(телефон)/мышь(компьютер) ---- */
+  var pImg = document.querySelector(".hero__figure img, .hero__figure video");
+  var pContent = document.querySelector(".hero__content");
+  if (pImg && !reduceMotion) {
+    var tX = 0, tY = 0, smX = 0, smY = 0; // цель и сглаженный наклон (-1..1)
+
+    // Компьютер: движение мыши
+    if (window.matchMedia("(hover: hover)").matches) {
+      window.addEventListener("mousemove", function (e) {
+        tX = (e.clientX / window.innerWidth - 0.5) * 2;
+        tY = (e.clientY / window.innerHeight - 0.5) * 2;
+      }, { passive: true });
+    }
+
+    // Телефон: гироскоп (наклон устройства)
+    function enableGyro() {
+      window.addEventListener("deviceorientation", function (e) {
+        if (e.gamma == null) return;
+        tX = Math.max(-1, Math.min(1, e.gamma / 28));
+        tY = Math.max(-1, Math.min(1, (e.beta - 45) / 28));
+      }, { passive: true });
+    }
+    if (typeof DeviceOrientationEvent !== "undefined" &&
+        typeof DeviceOrientationEvent.requestPermission === "function") {
+      // iOS: запрос доступа к датчикам при первом касании
+      window.addEventListener("touchend", function once() {
+        DeviceOrientationEvent.requestPermission()
+          .then(function (st) { if (st === "granted") enableGyro(); })
+          .catch(function () {});
+        window.removeEventListener("touchend", once);
+      }, { once: true });
+    } else if ("ondeviceorientation" in window) {
+      enableGyro();
+    }
+
+    (function ploop() {
+      smX += (tX - smX) * 0.06;
+      smY += (tY - smY) * 0.06;
+      var vh = window.innerHeight || 1;
+      var sy = Math.min(window.scrollY, vh); // параллакс только в пределах шапки
+      pImg.style.transform =
+        "translate3d(" + (smX * -10) + "px," + (sy * 0.05 + smY * -8) + "px,0) scale(1.14)";
+      if (pContent) {
+        pContent.style.transform =
+          "translate3d(" + (smX * 14) + "px," + (sy * -0.05 + smY * 10) + "px,0)";
+      }
+      requestAnimationFrame(ploop);
+    })();
+  }
 })();
