@@ -356,6 +356,9 @@ body::before {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink);
+  /* Мягкая подсветка имени — ровный серебристо-голубой ореол */
+  filter: drop-shadow(0 0 14px rgba(198, 210, 242, 0.45))
+          drop-shadow(0 0 36px rgba(150, 165, 222, 0.3));
 }
 /* Имя проявляется из тумана — буквы по очереди выходят из размытия со свечением */
 .hero__title span {
@@ -708,12 +711,13 @@ body::before {
     margin-top: 26vh;
     padding: 0 1rem;
   }
-  /* Имя крупнее (~×2), ниже, чуть полупрозрачное */
+  /* Имя крупнее (~×2), ниже, чуть полупрозрачное, с мягкой подсветкой */
   .hero__title {
     font-size: 27vw;
     letter-spacing: 0.03em;
-    opacity: 0.82;
-    filter: drop-shadow(0 3px 22px rgba(0, 0, 0, 0.7));
+    opacity: 0.85;
+    filter: drop-shadow(0 3px 20px rgba(0, 0, 0, 0.7))
+            drop-shadow(0 0 18px rgba(198, 210, 242, 0.5));
   }
   .hero__cta { display: none; }
   .hero__scroll { display: none; }
