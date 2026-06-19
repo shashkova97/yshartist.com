@@ -79,10 +79,10 @@ body::before {
   z-index: -1;
   pointer-events: none;
   background:
-    radial-gradient(46% 42% at 86% 38%, rgba(190, 196, 224, 0.17), transparent 60%),
-    radial-gradient(42% 40% at 74% 66%, rgba(150, 144, 168, 0.14), transparent 62%),
-    radial-gradient(40% 48% at 95% 82%, rgba(205, 200, 220, 0.11), transparent 60%);
-  filter: blur(48px);
+    radial-gradient(46% 42% at 86% 38%, rgba(196, 202, 228, 0.26), transparent 62%),
+    radial-gradient(42% 40% at 72% 66%, rgba(156, 150, 176, 0.22), transparent 64%),
+    radial-gradient(40% 48% at 96% 82%, rgba(208, 204, 224, 0.18), transparent 62%);
+  filter: blur(46px);
   mix-blend-mode: screen;
   transform-origin: 90% 48%;
   will-change: transform, opacity;
@@ -171,7 +171,8 @@ body::before {
   .reveal { opacity: 1; transform: none; transition: none; }
   .grain { animation: none; }
   .hero__title { animation: none; }
-  .hero__smoke { animation: none; }
+  .hero__smoke::before,
+  .hero__smoke::after { animation: none; }
   .site-smoke { animation: none; }
   .hero__title span { animation: none; opacity: 1; filter: none; transform: none; }
   .hero__figure img { animation: none; }
@@ -335,18 +336,37 @@ body::before {
   inset: -30%;
   z-index: 1;
   pointer-events: none;
-  background:
-    radial-gradient(40% 32% at 28% 36%, rgba(200, 206, 228, 0.20), transparent 60%),
-    radial-gradient(46% 38% at 70% 62%, rgba(150, 144, 166, 0.18), transparent 62%),
-    radial-gradient(34% 40% at 56% 26%, rgba(210, 206, 220, 0.15), transparent 60%);
-  filter: blur(26px);
+}
+/* Два встречных слоя дыма — даёт ощущение клубящегося движения */
+.hero__smoke::before,
+.hero__smoke::after {
+  content: "";
+  position: absolute;
+  inset: 0;
   mix-blend-mode: screen;
-  animation: smokeDrift 22s ease-in-out infinite alternate;
   will-change: transform;
 }
-@keyframes smokeDrift {
-  0%   { transform: translate3d(-6%, 3%, 0) scale(1.0) rotate(-2deg); }
-  100% { transform: translate3d(7%, -5%, 0) scale(1.22) rotate(4deg); }
+.hero__smoke::before {
+  background:
+    radial-gradient(40% 36% at 26% 64%, rgba(222, 228, 244, 0.34), transparent 60%),
+    radial-gradient(46% 40% at 60% 78%, rgba(184, 180, 202, 0.28), transparent 62%);
+  filter: blur(24px);
+  animation: smokeA 18s ease-in-out infinite alternate;
+}
+.hero__smoke::after {
+  background:
+    radial-gradient(36% 42% at 70% 58%, rgba(214, 214, 232, 0.30), transparent 60%),
+    radial-gradient(44% 38% at 34% 80%, rgba(198, 192, 214, 0.24), transparent 62%);
+  filter: blur(30px);
+  animation: smokeB 25s ease-in-out infinite alternate;
+}
+@keyframes smokeA {
+  0%   { transform: translate3d(-8%, 5%, 0) scale(1.0) rotate(-3deg); }
+  100% { transform: translate3d(9%, -7%, 0) scale(1.3) rotate(4deg); }
+}
+@keyframes smokeB {
+  0%   { transform: translate3d(8%, -6%, 0) scale(1.22) rotate(3deg); }
+  100% { transform: translate3d(-10%, 7%, 0) scale(0.96) rotate(-4deg); }
 }
 
 /* Мягкая растушёвка краёв — статичные градиенты цветом фона (лёгкие для GPU) */
