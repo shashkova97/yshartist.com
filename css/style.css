@@ -414,14 +414,14 @@ body::before {
 .about__frame img { width: 100%; height: 100%; object-fit: cover; }
 
 .about__heading {
-  font-family: var(--display);
-  font-weight: 600;
-  font-size: clamp(1.9rem, 4.6vw, 3.1rem);
-  line-height: 1.14;
+  font-family: "Unbounded", sans-serif;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 3.5vw, 2.4rem);
+  line-height: 1.28;
   letter-spacing: -0.01em;
   margin-bottom: 1.8rem;
 }
-.about__heading em { color: var(--emerald); font-style: italic; font-weight: 500; }
+.about__heading em { color: var(--emerald); font-style: normal; font-weight: 400; }
 .about__text p {
   color: var(--text-dim);
   font-size: 1.05rem;
