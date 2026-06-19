@@ -286,9 +286,6 @@ body::before {
   height: 100%;
   object-fit: cover;
   object-position: center 26%;   /* держим лицо в кадре */
-  /* Лёгкое «дыхание» — очень медленный зум, оживляет статичное фото */
-  transform-origin: 58% 40%;
-  animation: kenburns 32s ease-in-out infinite alternate;
 }
 /* Мягкая растушёвка краёв — статичные градиенты цветом фона (лёгкие для GPU) */
 .hero__figure::before {
