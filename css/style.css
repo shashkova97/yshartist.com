@@ -280,14 +280,12 @@ body::before {
   height: 100%;
   z-index: 1;
 }
-.hero__figure img {
+.hero__figure img,
+.hero__figure video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 34%;   /* держим лицо в кадре */
-  /* Кинематографичное «дыхание» — очень медленный зум */
-  transform-origin: 60% 42%;
-  animation: kenburns 30s ease-in-out infinite alternate;
+  object-position: center 28%;   /* держим лицо в кадре */
   /* Растворяем края фото в прозрачность — сквозь них проступает фон сайта,
      поэтому «коробки» не видно, фото сливается с фоном */
   -webkit-mask-image:
@@ -683,8 +681,9 @@ body::before {
     inset: 0;
     z-index: 0;
   }
-  .hero__figure img {
-    object-position: center 30%;
+  .hero__figure img,
+  .hero__figure video {
+    object-position: center 26%;
     -webkit-mask-image: none;
     mask-image: none;
   }
