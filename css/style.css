@@ -143,6 +143,7 @@ body::before {
   .reveal { opacity: 1; transform: none; transition: none; }
   .grain { animation: none; }
   .hero__title { animation: none; }
+  .hero__smoke { animation: none; }
   .hero__title span { animation: none; opacity: 1; filter: none; transform: none; }
   .hero__figure img { animation: none; }
   html { scroll-behavior: auto; }
@@ -290,6 +291,26 @@ body::before {
   object-fit: cover;
   object-position: center 26%;   /* держим лицо в кадре */
 }
+/* Движущийся дымок поверх фото — постоянный медленный дрейф */
+.hero__smoke {
+  position: absolute;
+  inset: -25%;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(38% 30% at 30% 38%, rgba(190, 198, 224, 0.10), transparent 60%),
+    radial-gradient(44% 36% at 68% 60%, rgba(150, 142, 162, 0.09), transparent 62%),
+    radial-gradient(32% 38% at 56% 28%, rgba(205, 200, 215, 0.07), transparent 60%);
+  filter: blur(34px);
+  mix-blend-mode: screen;
+  animation: smokeDrift 28s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes smokeDrift {
+  0%   { transform: translate3d(-3%, 2%, 0) scale(1.05) rotate(0deg); }
+  100% { transform: translate3d(4%, -3%, 0) scale(1.18) rotate(5deg); }
+}
+
 /* Мягкая растушёвка краёв — статичные градиенты цветом фона (лёгкие для GPU) */
 .hero__figure::before {
   content: "";
@@ -367,12 +388,6 @@ body::before {
 .hero__title span:nth-child(4) { animation-delay: 1.4s; }
 /* Компенсируем хвостовую разрядку после последней буквы — чтобы имя было ровно по центру */
 .hero__title span:last-child { margin-right: -0.12em; }
-/* Мягкое пульсирующее свечение имени (ярче — тусклее, по кругу) */
-.hero__title { animation: nameGlow 5.5s ease-in-out infinite; }
-@keyframes nameGlow {
-  0%, 100% { filter: drop-shadow(0 0 10px rgba(180, 195, 235, 0.12)); }
-  50%      { filter: drop-shadow(0 0 28px rgba(180, 195, 235, 0.45)); }
-}
 @keyframes letterFog {
   0%   { opacity: 0; filter: blur(24px); transform: translateY(10px); }
   60%  { opacity: 1; }
@@ -709,16 +724,12 @@ body::before {
     margin-top: 26vh;
     padding: 0 1rem;
   }
-  /* Имя крупнее (~×2), ниже, чуть полупрозрачное, с пульс-свечением */
+  /* Имя крупнее (~×2), ниже, чуть полупрозрачное */
   .hero__title {
     font-size: 27vw;
     letter-spacing: 0.03em;
     opacity: 0.82;
-    animation: nameGlowM 5.5s ease-in-out infinite;
-  }
-  @keyframes nameGlowM {
-    0%, 100% { filter: drop-shadow(0 3px 22px rgba(0,0,0,0.7)) drop-shadow(0 0 10px rgba(180,195,235,0.12)); }
-    50%      { filter: drop-shadow(0 3px 22px rgba(0,0,0,0.7)) drop-shadow(0 0 30px rgba(180,195,235,0.5)); }
+    filter: drop-shadow(0 3px 22px rgba(0, 0, 0, 0.7));
   }
   .hero__cta { display: none; }
   .hero__scroll { display: none; }
