@@ -134,8 +134,8 @@
     function enableGyro() {
       window.addEventListener("deviceorientation", function (e) {
         if (e.gamma == null) return;
-        tX = Math.max(-1, Math.min(1, e.gamma / 28));
-        tY = Math.max(-1, Math.min(1, (e.beta - 45) / 28));
+        tX = Math.max(-1, Math.min(1, e.gamma / 18));
+        tY = Math.max(-1, Math.min(1, (e.beta - 45) / 18));
       }, { passive: true });
     }
     if (typeof DeviceOrientationEvent !== "undefined" &&
