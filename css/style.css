@@ -72,6 +72,34 @@ body::before {
     var(--bg);
 }
 
+/* Дым, расползающийся из фото по всему сайту на входе, затем вечно клубится */
+.site-smoke {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(46% 42% at 86% 38%, rgba(190, 196, 224, 0.17), transparent 60%),
+    radial-gradient(42% 40% at 74% 66%, rgba(150, 144, 168, 0.14), transparent 62%),
+    radial-gradient(40% 48% at 95% 82%, rgba(205, 200, 220, 0.11), transparent 60%);
+  filter: blur(48px);
+  mix-blend-mode: screen;
+  transform-origin: 90% 48%;
+  will-change: transform, opacity;
+  animation:
+    smokeSpread 5.5s cubic-bezier(0.22, 0.61, 0.36, 1) both,
+    smokeFloat 36s ease-in-out 5.5s infinite alternate;
+}
+@keyframes smokeSpread {
+  0%   { opacity: 0; transform: translateX(15%) scale(0.42); }
+  55%  { opacity: 1; }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes smokeFloat {
+  0%   { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-7%, -4%) scale(1.16); }
+}
+
 /* Зерно / плёночная текстура */
 .grain {
   position: fixed;
@@ -144,6 +172,7 @@ body::before {
   .grain { animation: none; }
   .hero__title { animation: none; }
   .hero__smoke { animation: none; }
+  .site-smoke { animation: none; }
   .hero__title span { animation: none; opacity: 1; filter: none; transform: none; }
   .hero__figure img { animation: none; }
   html { scroll-behavior: auto; }
@@ -692,6 +721,15 @@ body::before {
   .nav__links { display: none; }
   .nav__burger { display: flex; }
   .nav__logo { font-size: 1.2rem; letter-spacing: 0.2em; }
+  /* Дым исходит из центра фото (на мобильном фото на весь экран) */
+  .site-smoke {
+    background:
+      radial-gradient(58% 34% at 50% 44%, rgba(190, 196, 224, 0.16), transparent 62%),
+      radial-gradient(54% 40% at 40% 66%, rgba(150, 144, 168, 0.13), transparent 64%),
+      radial-gradient(50% 38% at 64% 30%, rgba(205, 200, 220, 0.10), transparent 60%);
+    filter: blur(40px);
+    transform-origin: 50% 52%;
+  }
   .about__inner { grid-template-columns: 1fr; }
   .about__portrait { max-width: 380px; margin: 0 auto; }
   .about__text { text-align: left; }
