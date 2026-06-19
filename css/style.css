@@ -72,34 +72,6 @@ body::before {
     var(--bg);
 }
 
-/* Дым, расползающийся из фото по всему сайту на входе, затем вечно клубится */
-.site-smoke {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background:
-    radial-gradient(46% 42% at 86% 38%, rgba(196, 202, 228, 0.26), transparent 62%),
-    radial-gradient(42% 40% at 72% 66%, rgba(156, 150, 176, 0.22), transparent 64%),
-    radial-gradient(40% 48% at 96% 82%, rgba(208, 204, 224, 0.18), transparent 62%);
-  filter: blur(46px);
-  mix-blend-mode: screen;
-  transform-origin: 90% 48%;
-  will-change: transform, opacity;
-  animation:
-    smokeSpread 5.5s cubic-bezier(0.22, 0.61, 0.36, 1) both,
-    smokeFloat 36s ease-in-out 5.5s infinite alternate;
-}
-@keyframes smokeSpread {
-  0%   { opacity: 0; transform: translateX(15%) scale(0.42); }
-  55%  { opacity: 1; }
-  100% { opacity: 1; transform: translateX(0) scale(1); }
-}
-@keyframes smokeFloat {
-  0%   { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(-7%, -4%) scale(1.16); }
-}
-
 /* Зерно / плёночная текстура */
 .grain {
   position: fixed;
@@ -171,9 +143,6 @@ body::before {
   .reveal { opacity: 1; transform: none; transition: none; }
   .grain { animation: none; }
   .hero__title { animation: none; }
-  .hero__smoke::before,
-  .hero__smoke::after { animation: none; }
-  .site-smoke { animation: none; }
   .hero__title span { animation: none; opacity: 1; filter: none; transform: none; }
   .hero__figure img { animation: none; }
   html { scroll-behavior: auto; }
@@ -330,45 +299,6 @@ body::before {
   object-fit: cover;
   object-position: center 26%;   /* держим лицо в кадре */
 }
-/* Движущийся дымок поверх фото — постоянный медленный дрейф */
-.hero__smoke {
-  position: absolute;
-  inset: -30%;
-  z-index: 1;
-  pointer-events: none;
-}
-/* Два встречных слоя дыма — даёт ощущение клубящегося движения */
-.hero__smoke::before,
-.hero__smoke::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  mix-blend-mode: screen;
-  will-change: transform;
-}
-.hero__smoke::before {
-  background:
-    radial-gradient(40% 36% at 26% 64%, rgba(222, 228, 244, 0.34), transparent 60%),
-    radial-gradient(46% 40% at 60% 78%, rgba(184, 180, 202, 0.28), transparent 62%);
-  filter: blur(24px);
-  animation: smokeA 18s ease-in-out infinite alternate;
-}
-.hero__smoke::after {
-  background:
-    radial-gradient(36% 42% at 70% 58%, rgba(214, 214, 232, 0.30), transparent 60%),
-    radial-gradient(44% 38% at 34% 80%, rgba(198, 192, 214, 0.24), transparent 62%);
-  filter: blur(30px);
-  animation: smokeB 25s ease-in-out infinite alternate;
-}
-@keyframes smokeA {
-  0%   { transform: translate3d(-8%, 5%, 0) scale(1.0) rotate(-3deg); }
-  100% { transform: translate3d(9%, -7%, 0) scale(1.3) rotate(4deg); }
-}
-@keyframes smokeB {
-  0%   { transform: translate3d(8%, -6%, 0) scale(1.22) rotate(3deg); }
-  100% { transform: translate3d(-10%, 7%, 0) scale(0.96) rotate(-4deg); }
-}
-
 /* Мягкая растушёвка краёв — статичные градиенты цветом фона (лёгкие для GPU) */
 .hero__figure::before {
   content: "";
@@ -741,15 +671,6 @@ body::before {
   .nav__links { display: none; }
   .nav__burger { display: flex; }
   .nav__logo { font-size: 1.2rem; letter-spacing: 0.2em; }
-  /* Дым исходит из центра фото (на мобильном фото на весь экран) */
-  .site-smoke {
-    background:
-      radial-gradient(58% 34% at 50% 44%, rgba(190, 196, 224, 0.16), transparent 62%),
-      radial-gradient(54% 40% at 40% 66%, rgba(150, 144, 168, 0.13), transparent 64%),
-      radial-gradient(50% 38% at 64% 30%, rgba(205, 200, 220, 0.10), transparent 60%);
-    filter: blur(40px);
-    transform-origin: 50% 52%;
-  }
   .about__inner { grid-template-columns: 1fr; }
   .about__portrait { max-width: 380px; margin: 0 auto; }
   .about__text { text-align: left; }
