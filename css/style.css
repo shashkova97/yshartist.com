@@ -664,6 +664,7 @@ body::before {
 @media (max-width: 860px) {
   .nav__links { display: none; }
   .nav__burger { display: flex; }
+  .nav__logo { font-size: 1.2rem; letter-spacing: 0.2em; }
   .about__inner { grid-template-columns: 1fr; }
   .about__portrait { max-width: 380px; margin: 0 auto; }
   .about__text { text-align: left; }
