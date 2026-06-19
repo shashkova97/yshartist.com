@@ -117,6 +117,8 @@ body::before {
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .grain { animation: none; }
+  .hero__title span { animation: none; opacity: 1; filter: none; transform: none; }
+  .hero__figure img { animation: none; }
   html { scroll-behavior: auto; }
 }
 
@@ -258,6 +260,9 @@ body::before {
   height: 100%;
   object-fit: cover;
   object-position: center 34%;   /* держим лицо в кадре */
+  /* Кинематографичное «дыхание» — очень медленный зум */
+  transform-origin: 60% 42%;
+  animation: kenburns 30s ease-in-out infinite alternate;
   /* Растворяем края фото в прозрачность — сквозь них проступает фон сайта,
      поэтому «коробки» не видно, фото сливается с фоном */
   -webkit-mask-image:
@@ -319,6 +324,7 @@ body::before {
 /* Имя — Italiana: нежный воздушный serif, широкий трекинг,
    кремовый поверх navy, с мягким свечением */
 .hero__title {
+  display: inline-flex;
   font-family: "Italiana", serif;
   font-weight: 400;
   font-size: clamp(4rem, 9.5vw, 9.5rem);
@@ -326,13 +332,30 @@ body::before {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink);
-  text-shadow: 0 0 55px var(--ink-glow);
-  transform-origin: left center;
-  transition: opacity 1s var(--ease), transform 1s var(--ease);
-  transition-delay: 0.2s;
 }
-.hero__title.reveal    { transform: translateY(28px); }
-.hero__title.reveal.in { transform: none; }
+/* Имя проявляется из тумана — буквы по очереди выходят из размытия со свечением */
+.hero__title span {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(24px);
+  transform: translateY(10px);
+  text-shadow: 0 0 60px var(--ink-glow);
+  animation: letterFog 3s var(--ease) forwards;
+}
+.hero__title span:nth-child(1) { animation-delay: 0.35s; }
+.hero__title span:nth-child(2) { animation-delay: 0.7s; }
+.hero__title span:nth-child(3) { animation-delay: 1.05s; }
+.hero__title span:nth-child(4) { animation-delay: 1.4s; }
+@keyframes letterFog {
+  0%   { opacity: 0; filter: blur(24px); transform: translateY(10px); }
+  60%  { opacity: 1; }
+  100% { opacity: 1; filter: blur(0); transform: translateY(0);
+         text-shadow: 0 0 55px var(--ink-glow); }
+}
+@keyframes kenburns {
+  from { transform: scale(1); }
+  to   { transform: scale(1.08); }
+}
 
 /* CTA — скромная текстовая подпись без линии и рамки, с лёгкой стрелкой */
 .hero__cta {
