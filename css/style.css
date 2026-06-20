@@ -739,7 +739,7 @@ body::before {
     order: 2;
     max-width: none;
     width: 150vw;
-    margin-left: calc(50% - 75vw);
+    margin-left: calc(50% - 75vw - 42px);
     margin-top: 3rem;
   }
 
