@@ -721,5 +721,4 @@ body::before {
   .cursor-glow { display: none; }
   /* На сенсорных устройствах убираем тяжёлые анимации — чтобы видео шло гладко */
   .grain { animation: none; opacity: 0.03; }
-  .dust { display: none; }
 }
