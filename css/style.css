@@ -143,6 +143,7 @@ body::before {
   .reveal { opacity: 1; transform: none; transition: none; }
   .grain { animation: none; }
   .hero__title { animation: none; }
+  .hero__hint span { animation: none; }
   .hero__title span { animation: none; opacity: 1; filter: none; transform: none; }
   .hero__figure img { animation: none; }
   html { scroll-behavior: auto; }
@@ -380,6 +381,43 @@ body::before {
 @keyframes kenburns {
   from { transform: scale(1); }
   to   { transform: scale(1.08); }
+}
+
+/* Подпись под именем — тонкая разрядка, мягкий тон */
+.hero__tagline {
+  margin-top: 1.4rem;
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 0.78rem;
+  letter-spacing: 0.46em;
+  text-transform: uppercase;
+  color: var(--rose-soft);
+}
+
+/* Тонкая линия-приглашение листать (мобильный) */
+.hero__hint {
+  display: none;
+  position: absolute;
+  bottom: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 46px;
+  background: rgba(236, 230, 224, 0.14);
+  overflow: hidden;
+  z-index: 2;
+}
+.hero__hint span {
+  position: absolute;
+  left: 0; top: 0;
+  width: 1px; height: 45%;
+  background: linear-gradient(to bottom, transparent, rgba(236, 230, 224, 0.85));
+  animation: scrollLine 2.4s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0%   { transform: translateY(-110%); opacity: 0; }
+  35%  { opacity: 1; }
+  100% { transform: translateY(240%); opacity: 0; }
 }
 
 /* CTA — скромная текстовая подпись без линии и рамки, с лёгкой стрелкой */
@@ -716,6 +754,15 @@ body::before {
   }
   .hero__cta { display: none; }
   .hero__scroll { display: none; }
+  .hero__hint { display: block; }
+  .hero__tagline {
+    margin-top: 1rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.4em;
+    padding-left: 0.4em;
+    color: var(--text-dim);
+    text-shadow: 0 2px 14px rgba(0, 0, 0, 0.7);
+  }
 }
 @media (hover: none) {
   .cursor-glow { display: none; }
