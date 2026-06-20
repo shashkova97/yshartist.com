@@ -440,9 +440,9 @@ body::before {
   100% { transform: translateY(240%); opacity: 0; }
 }
 
-/* CTA — скромная текстовая подпись без линии и рамки, с лёгкой стрелкой */
+/* CTA «listen» — отключено по просьбе */
 .hero__cta {
-  display: inline-flex;
+  display: none;
   align-items: center;
   gap: 0.5rem;
   margin-top: 2.8rem;
@@ -774,7 +774,6 @@ body::before {
   }
   .hero__cta { display: none; }
   .hero__scroll { display: none; }
-  .hero__hint { display: block; }
   .hero__tagline {
     margin-top: 1rem;
     font-size: 0.7rem;
