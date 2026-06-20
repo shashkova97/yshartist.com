@@ -143,13 +143,11 @@ body::before {
   .reveal { opacity: 1; transform: none; transition: none; }
   .grain { animation: none; }
   .hero__title { animation: none; }
-  .photoname { animation: none; opacity: 1; }
   .hero__hint span { animation: none; }
   .nav__burger span { background: rgba(236, 230, 224, 0.6); }
   .nav__burger span::after { animation: none; opacity: 0; }
   .hero__title span { animation: none; opacity: 1; filter: none; transform: none; }
   .hero__figure img { animation: none; }
-  .hero__fullphoto { animation: none; }
   html { scroll-behavior: auto; }
 }
 
@@ -297,52 +295,6 @@ body::before {
   align-items: stretch;
   overflow: hidden;
 }
-
-/* ===== Вариант «имя из фото»: гигантское YSHA как окно в портрет ===== */
-.hero--photoname {
-  grid-template-columns: 1fr;
-  place-items: center;
-  text-align: center;
-  padding: 0 1.2rem;
-}
-/* Полноэкранное фото-фон под именем-контуром */
-.hero__fullphoto {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: url("../assets/portrait.webp?v=3") no-repeat 50% 22% fixed;
-  background-size: cover;
-}
-/* Лёгкое притемнение + растворение краёв/низа в фон сайта */
-.hero__fullphoto::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(120% 90% at 50% 38%, transparent 45%, rgba(8, 12, 30, 0.55) 100%),
-    linear-gradient(to bottom, transparent 60%, var(--bg) 97%);
-}
-.photoname-wrap { position: relative; z-index: 2; }
-.photoname {
-  position: relative;
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: clamp(4rem, 22vw, 19rem);
-  line-height: 0.95;
-  letter-spacing: 0.04em;   /* чистый гротеск — ровные пустые контуры */
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  opacity: 0;
-  animation: pnIn 1.6s var(--ease) 0.2s forwards;
-}
-/* Буквы — только прозрачный контур, внутри пусто (видно фото за ними) */
-.photoname--outline {
-  -webkit-text-stroke: 1.6px rgba(240, 235, 228, 0.88);
-  text-stroke: 1.6px rgba(240, 235, 228, 0.88);
-  filter: drop-shadow(0 4px 22px rgba(0, 0, 0, 0.5));
-}
-@keyframes pnIn { to { opacity: 1; } }
-.hero--photoname .hero__tagline { margin-top: 1.9rem; color: var(--text-dim); }
 
 /* Фото справа во всю высоту (журнальный сплит) */
 .hero__figure {
