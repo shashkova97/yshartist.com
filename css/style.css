@@ -356,10 +356,7 @@ body::before {
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink);
-  opacity: 0.7;
-  /* Мягкая подсветка имени — ровный серебристо-голубой ореол */
-  filter: drop-shadow(0 0 14px rgba(198, 210, 242, 0.45))
-          drop-shadow(0 0 36px rgba(150, 165, 222, 0.3));
+  opacity: 0.35;
 }
 /* Имя проявляется из тумана — буквы по очереди выходят из размытия со свечением */
 .hero__title span {
@@ -367,7 +364,6 @@ body::before {
   opacity: 0;
   filter: blur(24px);
   transform: translateY(10px);
-  text-shadow: 0 0 60px var(--ink-glow);
   animation: letterFog 3s var(--ease) forwards;
 }
 .hero__title span:nth-child(1) { animation-delay: 0.35s; }
@@ -379,8 +375,7 @@ body::before {
 @keyframes letterFog {
   0%   { opacity: 0; filter: blur(24px); transform: translateY(10px); }
   60%  { opacity: 1; }
-  100% { opacity: 1; filter: blur(0); transform: translateY(0);
-         text-shadow: 0 0 55px var(--ink-glow); }
+  100% { opacity: 1; filter: blur(0); transform: translateY(0); }
 }
 @keyframes kenburns {
   from { transform: scale(1); }
@@ -712,13 +707,12 @@ body::before {
     margin-top: 26vh;
     padding: 0 1rem;
   }
-  /* Имя крупнее (~×2), ниже, чуть полупрозрачное, с мягкой подсветкой */
+  /* Имя крупнее (~×2), ниже, сильно полупрозрачное, без подсветки */
   .hero__title {
     font-size: 27vw;
     letter-spacing: 0.03em;
-    opacity: 0.7;
-    filter: drop-shadow(0 3px 20px rgba(0, 0, 0, 0.7))
-            drop-shadow(0 0 18px rgba(198, 210, 242, 0.5));
+    opacity: 0.35;
+    filter: drop-shadow(0 2px 16px rgba(0, 0, 0, 0.6));
   }
   .hero__cta { display: none; }
   .hero__scroll { display: none; }
