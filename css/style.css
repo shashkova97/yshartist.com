@@ -144,6 +144,8 @@ body::before {
   .grain { animation: none; }
   .hero__title { animation: none; }
   .hero__hint span { animation: none; }
+  .nav__burger span { background: rgba(236, 230, 224, 0.6); }
+  .nav__burger span::after { animation: none; opacity: 0; }
   .hero__title span { animation: none; opacity: 1; filter: none; transform: none; }
   .hero__figure img { animation: none; }
   html { scroll-behavior: auto; }
@@ -230,12 +232,30 @@ body::before {
   padding: 6px;
 }
 .nav__burger span {
+  position: relative;
   width: 26px; height: 1px;
-  background: rgba(236, 230, 224, 0.6);
+  background: rgba(236, 230, 224, 0.22);
+  overflow: hidden;
   transition: transform 0.4s var(--ease), opacity 0.4s var(--ease);
 }
-.nav__burger.open span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
-.nav__burger.open span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
+/* Бегущий световой штрих — тот же эффект, что у линии-приглашения */
+.nav__burger span::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 45%; height: 100%;
+  background: linear-gradient(to right, transparent, rgba(236, 230, 224, 0.9));
+  animation: shimmerX 2.4s ease-in-out infinite;
+}
+.nav__burger span:nth-child(2)::after { animation-delay: 0.5s; }
+.nav__burger.open span::after { animation: none; opacity: 0; }
+@keyframes shimmerX {
+  0%   { transform: translateX(-110%); opacity: 0; }
+  35%  { opacity: 1; }
+  100% { transform: translateX(240%); opacity: 0; }
+}
+.nav__burger.open span:nth-child(1) { transform: translateY(4px) rotate(45deg); background: rgba(236, 230, 224, 0.7); }
+.nav__burger.open span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); background: rgba(236, 230, 224, 0.7); }
 
 /* Мобильное меню */
 .mobile-menu {
