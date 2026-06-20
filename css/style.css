@@ -134,10 +134,9 @@ body::before {
 /* ---------- Появление при скролле ---------- */
 .reveal {
   opacity: 0;
-  transform: translateY(34px);
-  transition: opacity 1.6s var(--ease), transform 1.6s var(--ease);
+  transition: opacity 1.4s var(--ease);
 }
-.reveal.in { opacity: 1; transform: none; }
+.reveal.in { opacity: 1; }
 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
