@@ -8,21 +8,6 @@
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---- Интро-экран: блокируем скролл, затем убираем ---- */
-  var introEl = document.getElementById("intro");
-  if (introEl) {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      introEl.parentNode && introEl.parentNode.removeChild(introEl);
-    } else {
-      document.documentElement.style.overflow = "hidden";
-      window.scrollTo(0, 0);
-      setTimeout(function () { document.documentElement.style.overflow = ""; }, 2600);
-      setTimeout(function () {
-        introEl.parentNode && introEl.parentNode.removeChild(introEl);
-      }, 4000);
-    }
-  }
-
   /* ---- Навигация: фон при скролле ---- */
   var nav = document.getElementById("nav");
   function onScroll() {

@@ -72,47 +72,6 @@ body::before {
     var(--bg);
 }
 
-/* ---------- Кинематографичный интро-экран ---------- */
-.intro {
-  position: fixed;
-  inset: 0;
-  z-index: 10001;
-  display: grid;
-  place-items: center;
-  background: radial-gradient(130% 100% at 50% 42%, #0d1430 0%, #05080f 78%);
-  will-change: transform;
-  animation: introLift 1.2s var(--ease) 2.5s forwards;
-}
-.intro__name {
-  display: inline-flex;
-  font-family: "Italiana", serif;
-  font-weight: 400;
-  font-size: clamp(3rem, 12vw, 8rem);
-  letter-spacing: 0.3em;
-  text-indent: 0.3em; /* компенсация разрядки для центра */
-  text-transform: uppercase;
-  color: var(--ink);
-  filter: drop-shadow(0 0 34px rgba(180, 195, 235, 0.28));
-}
-.intro__name span {
-  display: inline-block;
-  opacity: 0;
-  filter: blur(22px);
-  transform: translateY(8px);
-  animation: introLetter 1.5s var(--ease) forwards;
-}
-.intro__name span:nth-child(1) { animation-delay: 0.25s; }
-.intro__name span:nth-child(2) { animation-delay: 0.45s; }
-.intro__name span:nth-child(3) { animation-delay: 0.65s; }
-.intro__name span:nth-child(4) { animation-delay: 0.85s; }
-@keyframes introLetter {
-  60%  { opacity: 1; }
-  100% { opacity: 1; filter: blur(0); transform: translateY(0); }
-}
-@keyframes introLift {
-  to { transform: translateY(-101%); }
-}
-
 /* Зерно / плёночная текстура */
 .grain {
   position: fixed;
@@ -183,8 +142,8 @@ body::before {
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .grain { animation: none; }
-  .intro { display: none; }
   .hero__title { animation: none; }
+  .photoname { animation: none; opacity: 1; }
   .hero__hint span { animation: none; }
   .nav__burger span { background: rgba(236, 230, 224, 0.6); }
   .nav__burger span::after { animation: none; opacity: 0; }
@@ -337,6 +296,41 @@ body::before {
   align-items: stretch;
   overflow: hidden;
 }
+
+/* ===== Вариант «имя из фото»: гигантское YSHA как окно в портрет ===== */
+.hero--photoname {
+  grid-template-columns: 1fr;
+  place-items: center;
+  text-align: center;
+  padding: 0 1.2rem;
+}
+.photoname-wrap { position: relative; z-index: 2; }
+.photoname {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: clamp(5.5rem, 27vw, 23rem);
+  line-height: 0.9;
+  letter-spacing: 0.005em;
+  /* фото проступает внутри букв */
+  background-image: url("../assets/portrait.webp?v=3");
+  background-repeat: no-repeat;
+  background-size: 122%;
+  background-position: 50% 22%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 14px 55px rgba(0, 0, 0, 0.55));
+  opacity: 0;
+  animation: pnIn 1.6s var(--ease) 0.2s forwards,
+             pnBreath 18s ease-in-out 1.9s infinite alternate;
+}
+@keyframes pnIn { to { opacity: 1; } }
+@keyframes pnBreath {
+  from { background-size: 122%; background-position: 50% 22%; }
+  to   { background-size: 140%; background-position: 55% 33%; }
+}
+.hero--photoname .hero__tagline { margin-top: 1.9rem; color: var(--text-dim); }
 
 /* Фото справа во всю высоту (журнальный сплит) */
 .hero__figure {
