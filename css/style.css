@@ -508,18 +508,17 @@ body::before {
 }
 .about__frame {
   position: relative;
-  border-radius: 4px;
   overflow: hidden;
   aspect-ratio: 3 / 4;
-  border: 1px solid var(--line);
-  box-shadow: 0 40px 80px -30px rgba(0,0,0,0.7);
-}
-.about__frame::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(10,16,40,0.5));
-  pointer-events: none;
+  /* Растворяем края фото в фон (как у главного) */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image:
+    linear-gradient(to right, transparent 0%, #000 15%, #000 85%, transparent 100%),
+    linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
+  mask-composite: intersect;
 }
 .about__frame img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -733,8 +732,9 @@ body::before {
   .nav__burger { display: flex; }
   .nav__logo { font-size: 1.2rem; letter-spacing: 0.2em; }
   .about__inner { grid-template-columns: 1fr; }
-  .about__portrait { max-width: 380px; margin: 0 auto; }
-  .about__text { text-align: left; }
+  /* Сначала описание, потом фото */
+  .about__text { order: 1; text-align: left; }
+  .about__portrait { order: 2; max-width: 380px; margin: 1rem auto 0; }
 
   /* Шапка: на мобильных фото — фон, имя ниже (зона подбородок–грудь), без listen */
   .hero {
