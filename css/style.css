@@ -762,12 +762,10 @@ body::before {
   }
   .hero__aura { left: 50%; top: 60%; }
   .hero__content {
+    align-items: center;
+    justify-content: flex-start;
     text-align: center;
-    max-width: 100%;
-    align-self: center;
-    justify-self: stretch;
-    margin-top: 26vh;
-    padding: 0 1rem;
+    padding: 52vh 1rem 0;
   }
   /* Имя крупнее (~×2), ниже, сильно полупрозрачное, без подсветки */
   .hero__title {
