@@ -325,33 +325,17 @@ body::before {
 .photoname-wrap { position: relative; z-index: 2; }
 .photoname {
   position: relative;
-  isolation: isolate;
   font-family: var(--display);
   font-weight: 800;
   font-size: clamp(5.5rem, 28vw, 24rem);
   line-height: 0.9;
-  letter-spacing: -0.07em;   /* буквы наезжают друг на друга */
+  letter-spacing: 0.01em;   /* буквы рядом, но не наезжают (без чужих линий внутри) */
   color: transparent;
   -webkit-text-fill-color: transparent;
   opacity: 0;
   animation: pnIn 1.6s var(--ease) 0.2s forwards;
 }
-/* Матовое стекло внутри букв — тот же кадр, но размытый (совмещён с фоном через fixed) */
-.photoname--outline::before {
-  content: "YSHA";
-  position: absolute;
-  left: 0; right: 0; top: 0;
-  text-align: center;
-  z-index: -1;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
-  background: url("../assets/portrait.webp?v=3") no-repeat 50% 22% fixed;
-  background-size: cover;
-  -webkit-background-clip: text;
-  background-clip: text;
-  filter: blur(6px) brightness(1.12);
-}
-/* Буквы — прозрачный контур (обводка) поверх */
+/* Буквы — только прозрачный контур, внутри пусто (видно фото за ними) */
 .photoname--outline {
   -webkit-text-stroke: 1.6px rgba(240, 235, 228, 0.88);
   text-stroke: 1.6px rgba(240, 235, 228, 0.88);
