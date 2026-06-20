@@ -325,11 +325,11 @@ body::before {
 .photoname-wrap { position: relative; z-index: 2; }
 .photoname {
   position: relative;
-  font-family: var(--display);
-  font-weight: 800;
-  font-size: clamp(5.5rem, 28vw, 24rem);
-  line-height: 0.9;
-  letter-spacing: 0.01em;   /* буквы рядом, но не наезжают (без чужих линий внутри) */
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: clamp(4rem, 22vw, 19rem);
+  line-height: 0.95;
+  letter-spacing: 0.04em;   /* чистый гротеск — ровные пустые контуры */
   color: transparent;
   -webkit-text-fill-color: transparent;
   opacity: 0;
