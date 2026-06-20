@@ -114,6 +114,26 @@
       glow.style.transform = "translate(" + cx + "px," + cy + "px)";
       requestAnimationFrame(loop);
     })();
+  } else if (glow) {
+    /* Телефон: фонарик подсвечивает место касания / скролла */
+    var tx = window.innerWidth / 2, ty = window.innerHeight / 2;
+    var ccx = tx, ccy = ty, hideTimer;
+    function moveGlow(e) {
+      var t = e.touches && e.touches[0];
+      if (!t) return;
+      tx = t.clientX; ty = t.clientY;
+      glow.style.opacity = "1";
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () { glow.style.opacity = "0"; }, 900);
+    }
+    window.addEventListener("touchstart", moveGlow, { passive: true });
+    window.addEventListener("touchmove", moveGlow, { passive: true });
+    (function tloop() {
+      ccx += (tx - ccx) * 0.18;
+      ccy += (ty - ccy) * 0.18;
+      glow.style.transform = "translate(" + ccx + "px," + ccy + "px)";
+      requestAnimationFrame(tloop);
+    })();
   }
 
   /* ---- Параллакс: скролл + наклон(телефон)/мышь(компьютер) ---- */
