@@ -304,6 +304,19 @@ body::before {
   text-align: center;
   padding: 0 1.2rem;
 }
+/* Еле заметный «призрак» портрета позади имени — чтобы читалось, что это человек */
+.hero__ghost {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: url("../assets/portrait.webp?v=3") no-repeat 50% 24%;
+  background-size: cover;
+  opacity: 0.16;
+  filter: blur(7px) saturate(1.1);
+  -webkit-mask-image: radial-gradient(58% 62% at 50% 40%, #000 28%, transparent 76%);
+  mask-image: radial-gradient(58% 62% at 50% 40%, #000 28%, transparent 76%);
+  pointer-events: none;
+}
 .photoname-wrap { position: relative; z-index: 2; }
 .photoname {
   font-family: var(--display);
@@ -311,24 +324,25 @@ body::before {
   font-size: clamp(5.5rem, 27vw, 23rem);
   line-height: 0.9;
   letter-spacing: 0.005em;
-  /* фото проступает внутри букв */
+  /* фото проступает внутри букв — подсвечено, чтобы читалось */
   background-image: url("../assets/portrait.webp?v=3");
   background-repeat: no-repeat;
-  background-size: 122%;
-  background-position: 50% 22%;
+  background-size: 132%;
+  background-position: 50% 30%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 14px 55px rgba(0, 0, 0, 0.55));
+  filter: brightness(1.32) contrast(1.12) saturate(1.18)
+          drop-shadow(0 14px 55px rgba(0, 0, 0, 0.5));
   opacity: 0;
   animation: pnIn 1.6s var(--ease) 0.2s forwards,
              pnBreath 18s ease-in-out 1.9s infinite alternate;
 }
 @keyframes pnIn { to { opacity: 1; } }
 @keyframes pnBreath {
-  from { background-size: 122%; background-position: 50% 22%; }
-  to   { background-size: 140%; background-position: 55% 33%; }
+  from { background-size: 132%; background-position: 50% 30%; }
+  to   { background-size: 150%; background-position: 55% 38%; }
 }
 .hero--photoname .hero__tagline { margin-top: 1.9rem; color: var(--text-dim); }
 
