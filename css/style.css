@@ -223,19 +223,19 @@ body::before {
 .nav__burger {
   display: none;
   flex-direction: column;
-  gap: 6px;
+  gap: 7px;
   background: none;
   border: none;
   cursor: pointer;
   padding: 6px;
 }
 .nav__burger span {
-  width: 26px; height: 1.5px;
-  background: var(--text);
+  width: 26px; height: 1px;
+  background: rgba(236, 230, 224, 0.6);
   transition: transform 0.4s var(--ease), opacity 0.4s var(--ease);
 }
-.nav__burger.open span:nth-child(1) { transform: translateY(3.7px) rotate(45deg); }
-.nav__burger.open span:nth-child(2) { transform: translateY(-3.7px) rotate(-45deg); }
+.nav__burger.open span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+.nav__burger.open span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
 
 /* Мобильное меню */
 .mobile-menu {
