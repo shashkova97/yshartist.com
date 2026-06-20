@@ -149,6 +149,7 @@ body::before {
   .nav__burger span::after { animation: none; opacity: 0; }
   .hero__title span { animation: none; opacity: 1; filter: none; transform: none; }
   .hero__figure img { animation: none; }
+  .hero__fullphoto { animation: none; }
   html { scroll-behavior: auto; }
 }
 
@@ -304,18 +305,24 @@ body::before {
   text-align: center;
   padding: 0 1.2rem;
 }
-/* Еле заметный «призрак» портрета позади имени — чтобы читалось, что это человек */
-.hero__ghost {
+/* Полноэкранное фото-фон под именем-контуром */
+.hero__fullphoto {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: url("../assets/portrait.webp?v=3") no-repeat 50% 24%;
+  background: url("../assets/portrait.webp?v=3") no-repeat 50% 22%;
   background-size: cover;
-  opacity: 0.16;
-  filter: blur(7px) saturate(1.1);
-  -webkit-mask-image: radial-gradient(58% 62% at 50% 40%, #000 28%, transparent 76%);
-  mask-image: radial-gradient(58% 62% at 50% 40%, #000 28%, transparent 76%);
-  pointer-events: none;
+  will-change: transform;
+  animation: kenburns 22s ease-in-out infinite alternate;
+}
+/* Лёгкое притемнение + растворение краёв/низа в фон сайта */
+.hero__fullphoto::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 90% at 50% 38%, transparent 45%, rgba(8, 12, 30, 0.55) 100%),
+    linear-gradient(to bottom, transparent 60%, var(--bg) 97%);
 }
 .photoname-wrap { position: relative; z-index: 2; }
 .photoname {
@@ -324,26 +331,18 @@ body::before {
   font-size: clamp(5.5rem, 27vw, 23rem);
   line-height: 0.9;
   letter-spacing: 0.005em;
-  /* фото проступает внутри букв — подсвечено, чтобы читалось */
-  background-image: url("../assets/portrait.webp?v=3");
-  background-repeat: no-repeat;
-  background-size: 132%;
-  background-position: 50% 30%;
-  -webkit-background-clip: text;
-  background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  filter: brightness(1.32) contrast(1.12) saturate(1.18)
-          drop-shadow(0 14px 55px rgba(0, 0, 0, 0.5));
   opacity: 0;
-  animation: pnIn 1.6s var(--ease) 0.2s forwards,
-             pnBreath 18s ease-in-out 1.9s infinite alternate;
+  animation: pnIn 1.6s var(--ease) 0.2s forwards;
+}
+/* Буквы — только прозрачный контур (обводка) */
+.photoname--outline {
+  -webkit-text-stroke: 1.6px rgba(240, 235, 228, 0.85);
+  text-stroke: 1.6px rgba(240, 235, 228, 0.85);
+  filter: drop-shadow(0 4px 22px rgba(0, 0, 0, 0.5));
 }
 @keyframes pnIn { to { opacity: 1; } }
-@keyframes pnBreath {
-  from { background-size: 132%; background-position: 50% 30%; }
-  to   { background-size: 150%; background-position: 55% 38%; }
-}
 .hero--photoname .hero__tagline { margin-top: 1.9rem; color: var(--text-dim); }
 
 /* Фото справа во всю высоту (журнальный сплит) */
