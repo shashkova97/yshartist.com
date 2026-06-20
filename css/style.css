@@ -731,14 +731,15 @@ body::before {
   .nav__links { display: none; }
   .nav__burger { display: flex; }
   .nav__logo { font-size: 1.2rem; letter-spacing: 0.2em; }
+  .about { overflow-x: hidden; }
   .about__inner { grid-template-columns: 1fr; }
-  /* Сначала описание, потом фото — фото во всю ширину экрана, ниже */
+  /* Сначала описание, потом фото — фото крупно (зум ~1.5x), ниже */
   .about__text { order: 1; text-align: left; }
   .about__portrait {
     order: 2;
     max-width: none;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
+    width: 150vw;
+    margin-left: calc(50% - 75vw);
     margin-top: 3rem;
   }
 
