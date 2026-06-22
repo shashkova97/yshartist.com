@@ -78,6 +78,30 @@
     window.addEventListener("scroll", kick, { once: true, passive: true });
   }
 
+  /* ---- Видео в About: автозапуск один раз, замирает на последнем кадре ---- */
+  var aboutVid = document.querySelector(".about__video");
+  if (aboutVid) {
+    aboutVid.muted = true;
+    aboutVid.playsInline = true;
+    aboutVid.setAttribute("muted", "");
+    aboutVid.setAttribute("playsinline", "");
+    var playAbout = function () {
+      var pr = aboutVid.play();
+      if (pr && typeof pr.catch === "function") pr.catch(function () {});
+    };
+    // запускаем, когда видео попадает в зону видимости
+    if ("IntersectionObserver" in window) {
+      var vio = new IntersectionObserver(function (ents) {
+        ents.forEach(function (e) { if (e.isIntersecting) { playAbout(); vio.unobserve(e.target); } });
+      }, { threshold: 0.25 });
+      vio.observe(aboutVid);
+    } else { playAbout(); }
+    window.addEventListener("touchend", function once() {
+      playAbout();
+      window.removeEventListener("touchend", once);
+    }, { once: true });
+  }
+
   /* ---- Плавающие пылинки в свете свечей ---- */
   var dust = document.querySelector(".dust");
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
