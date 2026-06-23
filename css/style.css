@@ -294,6 +294,19 @@ body::before {
   align-items: stretch;
   overflow: hidden;
 }
+/* Космическая пыль с фото, растянутая на весь экран (размытый слой-подложка) */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url("../assets/about.webp") no-repeat 50% 28%;
+  background-size: cover;
+  filter: blur(72px) brightness(0.7) saturate(1.18);
+  transform: scale(1.3);
+  opacity: 0.9;
+  pointer-events: none;
+}
 
 /* Фото справа во всю высоту (журнальный сплит) */
 .hero__figure {
