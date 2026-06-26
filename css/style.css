@@ -347,9 +347,9 @@ body::before {
   z-index: 3;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
-  text-align: right;
+  text-align: center;
   padding: 0 clamp(1.5rem, 6vw, 6rem);
   pointer-events: none;
 }

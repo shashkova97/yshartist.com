@@ -202,10 +202,6 @@
       var sy = Math.min(window.scrollY, vh); // параллакс только в пределах шапки
       pImg.style.transform =
         "translate3d(" + (smX * -20) + "px," + (sy * 0.05 + smY * -16) + "px,0) scale(1.16)";
-      if (pContent) {
-        pContent.style.transform =
-          "translate3d(" + (smX * 24) + "px," + (sy * -0.05 + smY * 18) + "px,0)";
-      }
       requestAnimationFrame(ploop);
     })();
   }
