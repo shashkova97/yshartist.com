@@ -367,14 +367,14 @@ body::before {
    кремовый поверх navy, с мягким свечением */
 .hero__title {
   display: inline-flex;
-  font-family: "Italiana", serif;
-  font-weight: 400;
+  font-family: "Bodoni Moda", "Italiana", serif;
+  font-weight: 500;
   font-size: clamp(6rem, 20vw, 20rem);
   line-height: 0.95;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: var(--ink);
-  opacity: 0.35;
+  opacity: 0.42;
 }
 /* Имя проявляется из тумана — буквы по очереди выходят из размытия со свечением */
 .hero__title span {
